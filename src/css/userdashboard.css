@@ -1,0 +1,11 @@
+.upload-div{
+    padding:20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   /* This ensures the div is centered vertically on the page */
+    margin: 0;
+}
+label{
+    padding: 5px;
+}

@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
+
+#root {
+  font-family: 'Roboto Slab', serif;
+  padding: 0px;
+  margin: 0px;
+  height: 100vh;
+
+}
+body{
+  width: 100%;
+}
+.card{
+  padding:0px;
+
+}

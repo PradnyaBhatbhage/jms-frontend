@@ -1,0 +1,12 @@
+.user-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   /* This ensures the div is centered vertically on the page */
+    margin: 0;
+
+}
+
+.p-field{
+    padding: 10px;;
+}
