@@ -85,7 +85,7 @@ export default function Navbar() {
   const end = (
     <div>
       <Button onClick={login} style={{ padding: "10px", margin: "10px" }} label="Login" severity="success" />
-      <Button onClick={logout} style={{ padding: "10px", margin: "10px" }} label="Logout" severity="danger" />
+      <Button visible={false} onClick={logout} style={{padding: "10px", margin: "10px" }} label="Logout" severity="danger" />
     </div>
   )
 
@@ -94,7 +94,7 @@ export default function Navbar() {
     ;
 
   return (
-    <div className="card">
+    <div className="card"  style={{position:"fixed", width:"100%"}}>
       <Menubar /* className="navbar-container" style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 999 }} */ model={items} start={start} end={end} />
       {/* <i className="fa-regular fa-rectangle-list"></i> */}
     </div>

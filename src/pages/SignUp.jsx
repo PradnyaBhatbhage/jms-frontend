@@ -72,7 +72,7 @@ const SignUp = () => {
   };
   return (
     <div className="user-form">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} style={{marginTop:"150px"}}>
         <h2>Registration Form</h2>
         <div className="p-fluid">
           <div className="p-field">

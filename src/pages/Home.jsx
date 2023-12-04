@@ -21,7 +21,7 @@ const Home = () => {
             </header>
 
             <div className="container">
-                <div className="text">
+                <div className="text"  style={{marginTop:"0px", paddingTop:"0px"}}>
                     {/* <h1>Journal Of Textile Association(JTA)</h1> */}
                     <p>
                         The Textile Association (India) publishes its Journal of the Textile Association (ITA)
@@ -49,7 +49,7 @@ const Home = () => {
                         invited to be published in the journal.</p>
                 </div>
 
-                <div className="image">
+                <div className="image" style={{marginTop:"95px", paddingTop:"0px"}}>
                     <img style={{ height: 700, width: 500 }} src="src/assets/j1.jpg" alt="Your Image" />
                 </div>
             </div>

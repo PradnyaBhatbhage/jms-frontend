@@ -18,6 +18,9 @@ const UserDashboard = () => {
     reviewer: "",
     description: "",
     fileId: "",
+    reviewersName:"",
+    reviewersContact:"",
+    reviewersEmail:""
   });
 
   const [submissionData, setSubmissionData] = useState([]);
@@ -88,14 +91,14 @@ const UserDashboard = () => {
   };
 
   return (
-    <div>
+    <div >
       <h2>
         Welcome{" "}
         {sessionStorage.getItem("firstName") +
           " " +
           sessionStorage.getItem("lastName")}
       </h2>
-      <TabView>
+      <TabView style={{marginTop:"90px", paddingTop:"0px"}}>
         <TabPanel header="Profile">
           <p className="m-0">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -137,9 +140,21 @@ const UserDashboard = () => {
                     onChange={handleChange}
                   />
                 </div>
-
                 <div className="p-field">
-                  <label style={{ fontWeight: "bold" }} htmlFor="domainName">
+                  <label style={{ fontWeight: "bold" }} htmlFor="organization">
+                    Organization
+                  </label>
+                  <InputText
+                    className="p-inputtext-l"
+                    style={{ marginTop: "10px" }}
+                    id="organization"
+                    name="organization"
+                    value={submission.organization}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="p-field">
+                  <label style={{ fontWeight: "bold" }} htmlFor="description">
                     Description
                   </label>
                   <InputText
@@ -152,17 +167,42 @@ const UserDashboard = () => {
                   />
                 </div>
                 <div className="p-field">
-                  <label style={{ fontWeight: "bold" }} htmlFor="role">
-                    Reviewer
+                  <label style={{ fontWeight: "bold" }} htmlFor="reviewersName">
+                    Reviewer's Name
                   </label>
-                  <Dropdown
+                  <InputText
+                    className="p-inputtext-l"
                     style={{ marginTop: "10px" }}
-                    id="reviewer"
-                    name="reviewer"
-                    value={submission.reviewer}
-                    options={UserDashboard.reviewers}
+                    id="reviewersName"
+                    name="reviewersName"
+                    value={submission.reviewersName}
                     onChange={handleChange}
-                    placeholder="Select a reviewer"
+                  />
+                  </div>
+                <div className="p-field">
+                  <label style={{ fontWeight: "bold" }} htmlFor="reviewersContact">
+                    Reviewer's Contact Number
+                  </label>
+                  <InputText
+                    className="p-inputtext-l"
+                    style={{ marginTop: "10px" }}
+                    id="reviewersContact"
+                    name="reviewersContact"
+                    value={submission.reviewersContact}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="p-field">
+                  <label style={{ fontWeight: "bold" }} htmlFor="reviewersEmail">
+                    Reviewer's Email
+                  </label>
+                  <InputText
+                    className="p-inputtext-l"
+                    style={{ marginTop: "10px" }}
+                    id="reviewersEmail"
+                    name="reviewersEmail"
+                    value={submission.reviewersEmail}
+                    onChange={handleChange}
                   />
                 </div>
                 <div

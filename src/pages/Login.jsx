@@ -69,8 +69,8 @@ const Login = () => {
   };
 
   return (
-    <div className="user-form">
-      <form onSubmit={handleSubmit}>
+    <div className="user-form" >
+      <form onSubmit={handleSubmit} style={{marginTop:"150px"}}>
         <h2>Login</h2>
         <div className="p-field">
           <label htmlFor="email">Email Id</label>

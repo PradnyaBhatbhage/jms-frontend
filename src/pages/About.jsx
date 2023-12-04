@@ -26,7 +26,7 @@ const About = () => {
         </p>
       </section> */}
 
-      <div className="container">
+      <div className="container" style={{marginTop:"80px"}}>
         <div className="text">
 
           <p>The Textile Association (India) established in the year 1939, is the foremost leading and largest Nonprofit making
@@ -65,14 +65,14 @@ const About = () => {
         </Card>
       </div> */}
 
-      <div style={{ padding: "20px", justifyContent: "center", display: "flex" }} className="card flex justify-content-center">
-        <Card style={{ width: "300px", margin: "20px" }} title="Our Mission">
+      <div style={{ padding: "20px", display: "flex", width:"100%", flexDirection:"row" }} className="card flex justify-content-center">
+        <Card style={{ width: "275px", margin: "20px" }} title="Our Mission">
           <p>To conduct the programmes for textile professionals and technocrats with an aim to achieve their continuous growth and development,
             which will enhance industrial Performance in terms of quality and productivity.
           </p>
         </Card>
 
-        <Card style={{ width: "300px", margin: "20px" }} title="Our Vision">
+        <Card style={{ width: "275px", margin: "20px" }} title="Our Vision">
           <p>To be a leading largest and internationally reputed Association of textile technocrats promoting scientific
             and technological knowledge and training globally with benchmark performance as well as
             commitments to professional ethics and social responsibility.
