@@ -1,12 +1,36 @@
-import { useState} from "react";
+import { useState, useEffect } from "react";
 import { TabView, TabPanel } from "primereact/tabview";
 import { InputText } from "primereact/inputtext";
-import { Dropdown } from "primereact/dropdown";
 import { Button } from "primereact/button";
-import SubmissionDataTable from "../components/SubmissionDataTable";
+import { DataTable } from 'primereact/datatable';
+import { Column } from 'primereact/column';
 import "/src/css/userdashboard.css";
+import { classNames } from 'primereact/utils';
+import { Toast } from 'primereact/toast';
+import { FileUpload } from 'primereact/fileupload';
+import { Rating } from 'primereact/rating';
+import { Toolbar } from 'primereact/toolbar';
+import { InputTextarea } from 'primereact/inputtextarea';
+import { RadioButton } from 'primereact/radiobutton';
+import { InputNumber } from 'primereact/inputnumber';
+import { Dialog } from 'primereact/dialog';
+import { Tag } from 'primereact/tag';
 import axios from "axios";
+import { Dropdown } from 'primereact/dropdown';
+
+function Reviewer(name, contact, email) {
+  this.name = name;
+  this.contact = contact;
+  this.email = email;
+}
+
+
 const UserDashboard = () => {
+
+  const [visible, setVisible] = useState(false);
+  const [reviewersList, setReviewersList] = useState([]);
+  const [selectedDomain, setSelectedDomain] = useState();
+
   const [submission, setSubmission] = useState({
     title: "",
     email: sessionStorage.getItem("email"),
@@ -18,10 +42,14 @@ const UserDashboard = () => {
     reviewer: "",
     description: "",
     fileId: "",
-    reviewersName:"",
-    reviewersContact:"",
-    reviewersEmail:""
+    editorsName: "",
+    editorsContact: "",
+    editorsEmail: "",
+    domain:selectedDomain,
+    reviewers: [reviewersList]
   });
+
+
 
   const [submissionData, setSubmissionData] = useState([]);
 
@@ -38,19 +66,26 @@ const UserDashboard = () => {
   //     });
   // }, [submissionData]);
 
-  const fetchData = () =>{
-    axios.get("http://localhost:8080/submission/getAll",{
-      params:{
-        email:sessionStorage.getItem("email"),
+  const fetchData = () => {
+    axios.get("http://localhost:8080/submission/fetchByEmail", {
+      params: {
+        email: sessionStorage.getItem("email"),
       }
 
-    }).then((data) =>{
-      setSubmissionData(data);
+    }).then((data) => {
+      console.log(data)
+      setSubmissionData(data.data);
       console.log(submissionData)
     })
   }
 
-  
+  useEffect(() => {
+    // Call fetchData when the component mounts
+    fetchData();
+    console.log(submissionData)
+  }, []);
+
+
 
   const [selectedFile, setSelectedFile] = useState(null);
 
@@ -90,6 +125,27 @@ const UserDashboard = () => {
     }
   };
 
+  const columns = [
+    { field: 'title', header: 'Title' },
+    { field: 'organization', header: 'Organization' },
+    { field: 'reviewersName', header: 'Reviewers Name' },
+    { field: 'description', header: 'Description' }
+  ];
+
+  const [domainNames, setDomainNames] = useState([]);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+     axios.get("http://localhost:8080/domain/findAll").then((response) =>{
+        setDomainNames(response.data);
+        console.log(domainNames);
+        setCount(100)
+     })
+  },[count])
+
+  
+ 
+
   return (
     <div >
       <h2>
@@ -98,7 +154,7 @@ const UserDashboard = () => {
           " " +
           sessionStorage.getItem("lastName")}
       </h2>
-      <TabView style={{marginTop:"90px", paddingTop:"0px"}}>
+      <TabView style={{ marginTop: "90px", paddingTop: "0px" }}>
         <TabPanel header="Profile">
           <p className="m-0">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -112,134 +168,140 @@ const UserDashboard = () => {
         </TabPanel>
         <TabPanel header="Upload Journal">
           <div className="upload-div">
-            <form onSubmit={handleSubmit}>
+            <form>
               <h2>Upload Journal</h2>
-              <div className="p-fluid">
-                <div className="p-field">
-                  <label style={{ fontWeight: "bold" }} htmlFor="title">
-                    Title
-                  </label>
-                  <InputText
-                    style={{ marginTop: "10px" }}
-                    id="title"
-                    name="title"
-                    value={submission.title}
-                    onChange={handleChange}
-                  />
-                </div>
 
-                <div className="p-field">
-                  <label style={{ fontWeight: "bold" }} htmlFor="domainName">
-                    Domain Name
-                  </label>
-                  <InputText
-                    style={{ marginTop: "10px" }}
-                    id="domainName"
-                    name="domainName"
-                    value={submission.domainName}
-                    onChange={handleChange}
-                  />
-                </div>
-                <div className="p-field">
-                  <label style={{ fontWeight: "bold" }} htmlFor="organization">
-                    Organization
-                  </label>
-                  <InputText
-                    className="p-inputtext-l"
-                    style={{ marginTop: "10px" }}
-                    id="organization"
-                    name="organization"
-                    value={submission.organization}
-                    onChange={handleChange}
-                  />
-                </div>
-                <div className="p-field">
-                  <label style={{ fontWeight: "bold" }} htmlFor="description">
-                    Description
-                  </label>
-                  <InputText
-                    className="p-inputtext-l"
-                    style={{ marginTop: "10px" }}
-                    id="description"
-                    name="description"
-                    value={submission.description}
-                    onChange={handleChange}
-                  />
-                </div>
-                <div className="p-field">
-                  <label style={{ fontWeight: "bold" }} htmlFor="reviewersName">
-                    Reviewer's Name
-                  </label>
-                  <InputText
-                    className="p-inputtext-l"
-                    style={{ marginTop: "10px" }}
-                    id="reviewersName"
-                    name="reviewersName"
-                    value={submission.reviewersName}
-                    onChange={handleChange}
-                  />
+              <div className="p-fluid">
+                <div style={{ display: 'flex', flexDirection: 'row' }}>
+                  <div className="p-field">
+                    <label style={{ fontWeight: "bold" }} htmlFor="title">
+                      Title
+                    </label>
+                    <InputText
+                      className="p-inputtext-l"
+                      style={{ marginTop: "10px" }}
+                      id="title"
+                      name="title"
+                      value={submission.title}
+                      onChange={handleChange}
+                    />
                   </div>
-                <div className="p-field">
-                  <label style={{ fontWeight: "bold" }} htmlFor="reviewersContact">
-                    Reviewer's Contact Number
-                  </label>
-                  <InputText
-                    className="p-inputtext-l"
-                    style={{ marginTop: "10px" }}
-                    id="reviewersContact"
-                    name="reviewersContact"
-                    value={submission.reviewersContact}
-                    onChange={handleChange}
-                  />
+
+                  <div className="p-field">
+                    <label style={{ fontWeight: "bold" }} htmlFor="domainName">
+                      Domain Name
+                    </label>
+                    <div className="card flex justify-content-center" style={{marginTop:'10px'}}>
+                      <Dropdown style={{height: '39px.59px', color:'black'}} value={selectedDomain} onChange={(e) => setSelectedDomain(e.value)} options={domainNames} optionLabel="domainName"
+                        placeholder="Select a Domain" className=" w-full" />
+                    </div>
+                  </div>
                 </div>
-                <div className="p-field">
-                  <label style={{ fontWeight: "bold" }} htmlFor="reviewersEmail">
-                    Reviewer's Email
-                  </label>
-                  <InputText
-                    className="p-inputtext-l"
-                    style={{ marginTop: "10px" }}
-                    id="reviewersEmail"
-                    name="reviewersEmail"
-                    value={submission.reviewersEmail}
-                    onChange={handleChange}
-                  />
+                <div style={{ display: 'flex', flexDirection: 'row' }}>
+                  <div className="p-field" style={{ display: 'flex', flexDirection: 'column' }}>
+                    <label style={{ fontWeight: "bold" }} htmlFor="organization">
+                      Organization
+                    </label>
+                    <InputText
+                      className="p-inputtext-l"
+                      style={{ marginTop: "10px" }}
+                      id="organization"
+                      name="organization"
+                      value={submission.organization}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="p-field">
+                    <label style={{ fontWeight: "bold" }} htmlFor="description">
+                      Description
+                    </label>
+                    <InputText
+                      className="p-inputtext-l"
+                      style={{ marginTop: "10px" }}
+                      id="description"
+                      name="description"
+                      value={submission.description}
+                      onChange={handleChange}
+                    />
+                  </div>
                 </div>
-                <div
+                <div style={{ display: 'flex', flexDirection: 'row' }}>
+                  <div className="p-field">
+                    <label style={{ fontWeight: "bold" }} htmlFor="reviewersName">
+                      Editor's Name
+                    </label>
+                    <InputText
+                      className="p-inputtext-l"
+                      style={{ marginTop: "10px" }}
+                      id="editorsName"
+                      name="editorsName"
+                      value={submission.editorsName}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="p-field">
+                    <label style={{ fontWeight: "bold" }} htmlFor="reviewersName">
+                      Editor's Contact
+                    </label>
+                    <InputText
+                      className="p-inputtext-l"
+                      style={{ marginTop: "10px" }}
+                      id="editorsName"
+                      name="editorsName"
+                      value={submission.editorsContact}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'row' }}>
+                  <div className="p-field">
+                    <label style={{ fontWeight: "bold" }} htmlFor="reviewersName">
+                      Editor's Email
+                    </label>
+                    <InputText
+                      className="p-inputtext-l"
+                      style={{ marginTop: "10px" }}
+                      id="editorsName"
+                      name="editorsName"
+                      value={submission.editorsEmail}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div
                   style={{ fontWeight: "bold" }}
-                  className="card flex justify-content-center"
+                  className="p-field"
                 >
                   <label htmlFor="role">Upload Journal</label>
                   <br />
                   <input
-                    style={{ marginLeft: "90px", marginTop: "10px" }}
+                    style={{ marginLeft: "90px", marginTop: "10px", display: 'flex', justifyContent: 'center' }}
                     type="file"
-                    accept=".pdf"
+                    accept=".pdf, .doc"
                     onChange={(event) => {
                       setSelectedFile(event.target.files[0]);
                     }}
                   />
                 </div>
+                  
+                </div>
+                <div>
+                    <DataTable/>
+                </div>
               </div>
               <div className="p-field">
-                <Button type="submit" label="Submit" />
+                <Button onClick={handleSubmit} type="submit" label="Submit" />
               </div>
             </form>
           </div>
         </TabPanel>
         <TabPanel header="History">
-          <div>
-           <table>
-            <thead>
-              <th>Title</th>
-              <th>Domain Name</th>
-              <th>Status</th>
-              <th>Created</th>
-            </thead>
-            <tbody>
-              <SubmissionDataTable/>
-            </tbody>
-           </table>
+          <div className="card">
+            <DataTable value={submissionData} tableStyle={{ minWidth: '50rem' }}>
+
+              {columns.map((col, i) => (
+                <Column key={col.field} field={col.field} header={col.header} />
+              ))}
+            </DataTable>
           </div>
         </TabPanel>
       </TabView>

@@ -9,3 +9,15 @@
 label{
     padding: 5px;
 }
+
+
+.p-field{
+    display: 'flex';
+    flex-direction: 'column';
+    width:350px;
+    padding:0px;
+    margin: 0px;
+}
+
+
+
