@@ -2,7 +2,7 @@
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
-import Home from './pages/home';
+
 import Login from './pages/Login';
 import Navbar from './components/Navbar';
 import UserDashboard from './pages/UserDashboard';
@@ -16,6 +16,7 @@ import ReviewerDashBoard from './pages/ReviewerDashBoard';
 import EditorDashboard from './pages/EditorDashboard';
 import About from './pages/About';
 import UserDashBoardNew from './pages/UserDashBoardNew';
+import Home from './pages/Home';
 function App() {
 
   return (

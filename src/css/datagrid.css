@@ -29,3 +29,7 @@
 .table tbody tr:hover{
     background-color: #eee;
 }
+
+.p-inputtext-l{
+    width:330px;
+}

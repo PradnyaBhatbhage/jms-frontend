@@ -94,8 +94,8 @@ export default function Navbar() {
     ;
 
   return (
-    <div className="card"  style={{position:"fixed", width:"100%"}}>
-      <Menubar style={{zIndex: '1000'}} /* className="navbar-container" style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 999 }} */ model={items} start={start} end={end} />
+    <div className="card"  style={{position:"fixed", width:"100%", zIndex:'1000'}}>
+      <Menubar /* className="navbar-container" style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 999 }} */ model={items} start={start} end={end} />
       {/* <i className="fa-regular fa-rectangle-list"></i> */}
     </div>
   );

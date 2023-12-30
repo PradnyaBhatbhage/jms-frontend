@@ -6,46 +6,12 @@ const DialogComponent = (visible) => {
 
     const [isVisible, setIsVisible] = useState(visible)
 
+
     return (
-        <div>
-            <Dialog isVisible={isVisible}>
-                <FormData>
-                    <div className="p-field" style={{ display: 'flex', flexDirection: 'column' }}>
-                        <label style={{ fontWeight: "bold" }} htmlFor="organization">
-                            Reviewers Name
-                        </label>
-                        <InputText
-                            className="p-inputtext-l"
-                            style={{ marginTop: "10px" }}
-                            id="organization"
-                            name="organization"
-                        />
-                    </div>
-                    <div className="p-field" style={{ display: 'flex', flexDirection: 'column' }}>
-                        <label style={{ fontWeight: "bold" }} htmlFor="organization">
-                            Reviewers Contact No
-                        </label>
-                        <InputText
-                            className="p-inputtext-l"
-                            style={{ marginTop: "10px" }}
-                            id="organization"
-                            name="organization"
-                        />
-                    </div>
-                    <div className="p-field" style={{ display: 'flex', flexDirection: 'column' }}>
-                        <label style={{ fontWeight: "bold" }} htmlFor="organization">
-                            Reviewers Emailw
-                        </label>
-                        <InputText
-                            className="p-inputtext-l"
-                            style={{ marginTop: "10px" }}
-                            id="organization"
-                            name="organization"
-                        />
-                    </div>
-                </FormData>
+        
+            <Dialog isVisible={isVisible} style={{width:'50vw',height:'350px'}} onHide={() => setIsVisible(false)}>
+                
             </Dialog>
-        </div>
     )
 }
 

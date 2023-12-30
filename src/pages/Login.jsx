@@ -28,7 +28,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     if (!validateEmail(loginData.email)) {
       alert("Invalid Email");
-    } else if (loginData.password.length < 8) {
+    } else if (loginData.password.length < 4) {
       alert("Invalid Password");
     } else {
       e.preventDefault();

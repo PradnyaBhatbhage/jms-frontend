@@ -2,22 +2,24 @@ import React from 'react'
 import "/src/css/datagrid.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
-import DialogComponent from './DialogComponent';
+import { InputText } from 'primereact/inputtext';
+import { Dialog } from 'primereact/dialog';
 import { useState } from 'react';
 import { Button } from 'primereact/button';
 const DataGrid = () => {
 
     const [visible, setVisible] = useState(false);
 
-    const onClickAddButtton = () =>{
-        if(!visible){
-            setVisible(true);
-        }
-    } 
+    const handleAddButtonClick = (e) => {
+        e.preventDefault();
+        setVisible(true);
+      };
+
+  
 
     return (
         <div>
-            <Button style={{width: '100px'}} type="add" severity="help" label="Add" icon="pi-pi plus"/>
+            
             <table className='table'>
                 <thead>
                     <tr>
@@ -51,7 +53,49 @@ const DataGrid = () => {
 
                 </tbody>
             </table>
-            <DialogComponent visible={visible}/>
+            <Button onClick={handleAddButtonClick} style={{width: '100px'}} type="add" severity="help" label="Add" icon="pi-pi plus"/>
+            <Dialog visible={visible} style={{width:'450px',height:'580px'}} onHide={() => setVisible(false)}>
+                
+            <div style={{ display: 'flex', flexDirection: 'column',alignItems: 'center', justifyContent:'center'}}>
+                <h3>Add Reviewer</h3>
+                    <div className="p-field" >
+                        <label style={{ fontWeight: "bold", alignSelf:'center' }} htmlFor="organization">
+                            Reviewers Name
+                        </label>
+                        <InputText
+                            className="p-inputtext-l"
+                            style={{ marginTop: "10px" }}
+                            id="organization"
+                            name="organization"
+                        />
+                    </div>
+                    <div className="p-field" style={{ display: 'flex', flexDirection: 'column' }}>
+                        <label style={{ fontWeight: "bold" }} htmlFor="organization">
+                            Reviewers Contact No
+                        </label>
+                        <InputText
+                            className="p-inputtext-l"
+                            style={{ marginTop: "10px" }}
+                            id="organization"
+                            name="organization"
+                        />
+                    </div>
+                    <div className="p-field" style={{ display: 'flex', flexDirection: 'column' }}>
+                        <label style={{ fontWeight: "bold" }} htmlFor="organization">
+                            Reviewers Email
+                        </label>
+                        <InputText
+                            className="p-inputtext-l"
+                            style={{ marginTop: "10px" }}
+                            id="organization"
+                            name="organization"
+                        />
+                    </div>
+                    <div className="p-field" style={{ display: 'flex', flexDirection: 'column' }}>
+                        <Button type="submit" label="Submit" />
+                    </div>
+                </div>
+            </Dialog>
         </div>
     )
 }
