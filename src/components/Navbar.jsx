@@ -18,10 +18,10 @@ export default function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-
     const isUserLoggedIn = sessionStorage.getItem('email');
     setIsLoggedIn(!!isUserLoggedIn);
   }, []);
+
   const navigate = useNavigate();
   const login = () => {
     navigate('/login');
@@ -95,7 +95,7 @@ export default function Navbar() {
 
   return (
     <div className="card"  style={{position:"fixed", width:"100%"}}>
-      <Menubar /* className="navbar-container" style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 999 }} */ model={items} start={start} end={end} />
+      <Menubar style={{zIndex: '1000'}} /* className="navbar-container" style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 999 }} */ model={items} start={start} end={end} />
       {/* <i className="fa-regular fa-rectangle-list"></i> */}
     </div>
   );

@@ -17,6 +17,7 @@ import { Dialog } from 'primereact/dialog';
 import { Tag } from 'primereact/tag';
 import axios from "axios";
 import { Dropdown } from 'primereact/dropdown';
+import DataGrid from "../components/DataGrid";
 
 function Reviewer(name, contact, email) {
   this.name = name;
@@ -124,6 +125,8 @@ const UserDashboard = () => {
         });
     }
   };
+
+  
 
   const columns = [
     { field: 'title', header: 'Title' },
@@ -285,7 +288,7 @@ const UserDashboard = () => {
                   
                 </div>
                 <div>
-                    <DataTable/>
+                <DataGrid/>  
                 </div>
               </div>
               <div className="p-field">

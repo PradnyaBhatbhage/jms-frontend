@@ -15,6 +15,7 @@ import SignUp from './pages/SignUp';
 import ReviewerDashBoard from './pages/ReviewerDashBoard';
 import EditorDashboard from './pages/EditorDashboard';
 import About from './pages/About';
+import UserDashBoardNew from './pages/UserDashBoardNew';
 function App() {
 
   return (
@@ -30,7 +31,7 @@ function App() {
             <Route path="/register" element={<SignUp/>}></Route>
             <Route path="/login" element={<Login/>}></Route>
             <Route path="/register" element={<SignUp/>}></Route>
-            <Route path="/user-dashboard" element={<UserDashboard/>}></Route>
+            <Route path="/user-dashboard" element={<UserDashBoardNew/>}></Route>
             <Route path="/reviewer-dashboard" element={<ReviewerDashBoard/>}></Route>
             <Route path="/editor-dashboard" element={<EditorDashboard/>}></Route>
             <Route path="/about" element={<About/>}></Route>
