@@ -15,6 +15,31 @@ const DataGrid = () => {
         setVisible(true);
       };
 
+      const [index,setIndex] = useState(null)
+    
+const [reviewer, setReviewer] = useState({
+    reviewersName: "",
+    reviewersContactNo: "",
+    reviewersEmail:""
+});     
+
+
+const [reviewers, setReviewers] = useState([]);
+const handleChange = (e) => {
+    const { name, value } = e.target;
+    setReviewer({ ...reviewer, [name]: value });
+
+  };
+
+const onSubmit = () => {
+    console.log(reviewer);
+    setReviewers([...reviewers, reviewer])
+    console.log(reviewers);
+    setVisible(false);
+}
+
+
+
   
 
     return (
@@ -30,26 +55,21 @@ const DataGrid = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Test</td>
-                        <td>324545634</td>
-                        <td>test@gmail.com</td>
-                        <td>
-                            <span><FontAwesomeIcon style={{color: "red", marginRight:"20px"}} icon={faTrash} /></span>
-                            <span><FontAwesomeIcon icon={faPen} /></span>
-                        </td>
+                    {reviewers.map((reviewer) => {
+                         <tr>
+                         <td>{reviewer.reviewersName}</td>
+                         <td>{reviewer.reviewersContactNo}</td>
+                         <td>{reviewer.reviewersEmail}</td>
+                         <td>
+                             <span><FontAwesomeIcon style={{color: "red", marginRight:"20px"}} icon={faTrash} /></span>
+                             <span><FontAwesomeIcon icon={faPen} /></span>
+                         </td>
+                         
+                     </tr>
                         
-                    </tr>
-                    <tr>
-                        <td>Test</td>
-                        <td>324545634</td>
-                        <td>test@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <td>Test</td>
-                        <td>324545634</td>
-                        <td>test@gmail.com</td>
-                    </tr>
+                    })}
+                   
+                   
 
                 </tbody>
             </table>
@@ -59,40 +79,43 @@ const DataGrid = () => {
             <div style={{ display: 'flex', flexDirection: 'column',alignItems: 'center', justifyContent:'center'}}>
                 <h3>Add Reviewer</h3>
                     <div className="p-field" >
-                        <label style={{ fontWeight: "bold", alignSelf:'center' }} htmlFor="organization">
-                            Reviewers Name
+                        <label style={{ fontWeight: "bold", alignSelf:'center' }} htmlFor="reviewersName">
+                            Reviewer's Name
                         </label>
                         <InputText
                             className="p-inputtext-l"
                             style={{ marginTop: "10px" }}
-                            id="organization"
-                            name="organization"
+                            id="reviewersName"
+                            name="reviewersName"
+                            onChange={handleChange}
                         />
                     </div>
                     <div className="p-field" style={{ display: 'flex', flexDirection: 'column' }}>
-                        <label style={{ fontWeight: "bold" }} htmlFor="organization">
-                            Reviewers Contact No
+                        <label style={{ fontWeight: "bold" }} htmlFor="reviewersContactNo">
+                            Reviewer's Contact No
                         </label>
                         <InputText
                             className="p-inputtext-l"
                             style={{ marginTop: "10px" }}
-                            id="organization"
-                            name="organization"
+                            id="reviewersContactNo"
+                            name="reviewersContactNo"
+                            onChange={handleChange}
                         />
                     </div>
                     <div className="p-field" style={{ display: 'flex', flexDirection: 'column' }}>
-                        <label style={{ fontWeight: "bold" }} htmlFor="organization">
-                            Reviewers Email
+                        <label style={{ fontWeight: "bold" }} htmlFor="reviewersEmail">
+                            Reviewer's Email
                         </label>
                         <InputText
                             className="p-inputtext-l"
                             style={{ marginTop: "10px" }}
-                            id="organization"
-                            name="organization"
+                            id="reviewersEmail"
+                            name="reviewersEmail"
+                            onChange={handleChange}
                         />
                     </div>
                     <div className="p-field" style={{ display: 'flex', flexDirection: 'column' }}>
-                        <Button type="submit" label="Submit" />
+                        <Button onClick={onSubmit} type="submit" label="Submit" />
                     </div>
                 </div>
             </Dialog>
