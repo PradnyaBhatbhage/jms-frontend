@@ -291,8 +291,8 @@ const UserDashboard = () => {
                 <DataGrid/>  
                 </div>
               </div>
-              <div className="p-field">
-                <Button onClick={handleSubmit} type="submit" label="Submit" />
+              <div className="p-field" style={{width:'100%'}}>
+                <Button  onClick={handleSubmit} type="submit" label="Submit" />
               </div>
             </form>
           </div>

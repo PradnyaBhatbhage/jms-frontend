@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import "/src/css/datagrid.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faPen, faPenToSquare, faTrash, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { InputText } from 'primereact/inputtext';
 import { Dialog } from 'primereact/dialog';
 import { useState } from 'react';
 import { Button } from 'primereact/button';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
+import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
 const DataGrid = () => {
 
     const [visible, setVisible] = useState(false);
@@ -17,7 +18,7 @@ const DataGrid = () => {
         setVisible(true);
     };
 
-    const [index, setIndex] = useState(null)
+    let count = 0;
 
     const [reviewer, setReviewer] = useState({
         reviewersName: "",
@@ -33,11 +34,54 @@ const DataGrid = () => {
 
     };
 
+    const toast = useRef(null);
+
+    const cancel = () => {
+        toast.current.show({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted', life: 3000 });
+    }
+
+    const confirm1 = () => {
+        confirmDialog({
+            message: 'Maximum Number of Editors has been Selected.',
+            icon: 'pi pi-exclamation-triangle',
+            defaultFocus: 'cancel',
+        });
+    };
+
+
+
     const onSubmit = () => {
-        console.log(reviewer);
-        setReviewers([...reviewers, reviewer])
-        console.log(reviewers);
-        setVisible(false);
+        if (count >3) {
+            confirm1();
+        } else {
+            console.log(reviewer);
+            setReviewers([...reviewers, reviewer])
+            console.log(reviewers);
+            setVisible(false);
+            count++;
+        }
+
+    }
+
+    const editIcon = () => {
+        return (
+            <FontAwesomeIcon color='blue' icon={faPenToSquare} />
+        )
+    }
+
+    const deleteIcon = () => {
+        return (
+            <FontAwesomeIcon color='red' icon={ faTrashCan} />
+        )
+    }
+
+    const header = () => {
+        return (
+            <div className='flex justify-content-between'>
+                <Button onClick={handleAddButtonClick} outlined type="button" label="Add Reviewer" icon="pi-pi plus" />
+            </div>
+
+        )
     }
 
 
@@ -47,13 +91,14 @@ const DataGrid = () => {
     return (
         <div>
 
-            <DataTable value={reviewers} tableStyle={{ minWidth: '50rem' }}>
+            <DataTable value={reviewers} tableStyle={{ minWidth: '50rem' }} header={header}>
                 <Column field="reviewersName" header="Name"></Column>
                 <Column field="reviewersContact" header="Contact"></Column>
                 <Column field="reviewersEmail" header="Email"></Column>
-                <Column field="delete" header="Delete"></Column>
+                <Column field="delete" header="Delete" body={deleteIcon}></Column>
+                <Column field="edit" header="Edit" body={editIcon}></Column>
             </DataTable>
-            <Button onClick={handleAddButtonClick} style={{ width: '100px' }} type="add" severity="help" label="Add" icon="pi-pi plus" />
+
             <Dialog visible={visible} style={{ width: '450px', height: '580px' }} onHide={() => setVisible(false)}>
 
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
@@ -71,14 +116,14 @@ const DataGrid = () => {
                         />
                     </div>
                     <div className="p-field" style={{ display: 'flex', flexDirection: 'column' }}>
-                        <label style={{ fontWeight: "bold" }} htmlFor="reviewersContactNo">
+                        <label style={{ fontWeight: "bold" }} htmlFor="reviewersContact">
                             Reviewer's Contact No
                         </label>
                         <InputText
                             className="p-inputtext-l"
                             style={{ marginTop: "10px" }}
-                            id="reviewersContactNo"
-                            name="reviewersContactNo"
+                            id="reviewersContact"
+                            name="reviewersContact"
                             onChange={handleChange}
                         />
                     </div>
