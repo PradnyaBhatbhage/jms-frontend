@@ -3,6 +3,8 @@ import React from 'react'
 import { MDBFooter, MDBContainer, MDBRow, MDBCol, MDBIcon } from 'mdb-react-ui-kit';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import { Button } from 'primereact/button';
+import { useNavigate } from 'react-router-dom';
 
 //import { Card } from 'primereact/card';
 const Home = () => {
@@ -14,6 +16,15 @@ const Home = () => {
 
         </div>
     ); */
+    const navigate = useNavigate();
+
+    const onLogin = () =>{
+        navigate("/login")
+    }
+
+    const onRegister = () =>{
+        navigate("/register");
+    }
     return (
         <div>
             <header>
@@ -21,7 +32,7 @@ const Home = () => {
             </header>
 
             <div className="container">
-                <div className="text"  style={{marginTop:"0px", paddingTop:"0px"}}>
+                <div className="text" style={{ marginTop: "0px", paddingTop: "0px" }}>
                     {/* <h1>Journal Of Textile Association(JTA)</h1> */}
                     <p>
                         The Textile Association (India) publishes its Journal of the Textile Association (ITA)
@@ -47,9 +58,14 @@ const Home = () => {
                         Journal of the Textile Association is an effective tool for strengthening the company's business
                         in India and abroad through advertisements. Corporate news, new product & technology write-ups are also
                         invited to be published in the journal.</p>
+
+                    <div style={{ display: 'flex', justifyContent: 'center' }}>
+                        <Button onClick={onLogin} style={{ padding: "10px", margin: "10px" }} label="Login" severity="success" />
+                        <Button onClick={onRegister} style={{ padding: "10px", margin: "10px" }} label="Register" severity="primary" />
+                    </div>
                 </div>
 
-                <div className="image" style={{marginTop:"95px", paddingTop:"0px"}}>
+                <div className="image" style={{ marginTop: "95px", paddingTop: "0px" }}>
                     <img style={{ height: 700, width: 500 }} src="src/assets/j1.jpg" alt="Your Image" />
                 </div>
             </div>

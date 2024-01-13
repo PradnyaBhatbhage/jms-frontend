@@ -93,7 +93,7 @@ const Login = () => {
             onChange={handleChange}
           />
         </div>
-        <div style={{display:"flex", justifyContent:"center",flexDirection:"column"}}>
+        <div className="p-field">
         <Button type="submit" label="Submit" style={{marginTop:'10px',marginLeft:'15px', width:"200px"}} />
         <Button type="submit" label="Forgot Password" severity="help" style={{marginTop:'10px', marginLeft:'15px',width:'200px'}}/>
         </div>
