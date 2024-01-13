@@ -3,6 +3,8 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFileArrowDown, faThumbsDown, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 const ReviewerDashBoard = () => {
   const [submissions, setSubmissions] = useState([
     {
@@ -25,6 +27,31 @@ const ReviewerDashBoard = () => {
     },
   ]);
 
+  const approve = () => {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '70px' }}>
+      <FontAwesomeIcon color='green' icon={faThumbsUp} />
+      </div>
+    )
+  }
+
+  const reject = () => {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '50px' }}>
+        <FontAwesomeIcon color='red' icon={faThumbsDown} />
+      </div>
+    )
+  }
+  
+  const downloadIcon = () => {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '80px' }}>
+        <FontAwesomeIcon color='blue' icon={faFileArrowDown} />
+      </div>
+    )
+  }
+  
+
   const approveSubmission = (submissionId) => {
     // Add your approval logic here
     alert(`Submission ${submissionId} has been approved.`);
@@ -34,13 +61,6 @@ const ReviewerDashBoard = () => {
     // Add your rejection logic here
     alert(`Submission ${submissionId} has been rejected.`);
   };
-
-  const actionTemplate = (rowData) => (
-    <div>
-      <button style={{padding:"10px", margin:"5px"}} className="p-button p-button-success" onClick={() => approveSubmission(rowData.id)}>Approve</button>
-      <button style={{padding:"10px", margin:"5px"}} className="p-button p-button-danger" onClick={() => rejectSubmission(rowData.id)}>Reject</button>
-    </div>
-  );
 
   const onCommentChange = (event, rowData) => {
     const updatedSubmissions = [...submissions];
@@ -73,10 +93,12 @@ const ReviewerDashBoard = () => {
           <Column field="title" header="Title" />
           <Column field="domain" header="Domain" />
           <Column field="description" header="Description" />
-          <Column body={actionTemplate} header="Actions" />
+          <Column body={approve} header="Approve" />
+          <Column body={reject} header="Reject" />
+          <Column body={downloadIcon} header='Download'/>
           <Column field="comment" header="Comment" editor={commentEditor} />
 
-        </DataTable>
+        </DataTable>y
       </div>
     </div>
     </div>

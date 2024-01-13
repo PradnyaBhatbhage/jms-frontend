@@ -3,7 +3,12 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
+import { faFileArrowDown, faThumbsDown, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useNavigate } from 'react-router-dom';
 const EditorDashboard = () => {
+
+  const navigate = useNavigate();
   const [submissions, setSubmissions] = useState([
     {
       id: 1,
@@ -35,12 +40,25 @@ const EditorDashboard = () => {
     alert(`Submission ${submissionId} has been rejected.`);
   };
 
-  const actionTemplate = (rowData) => (
-    <div>
-      <button style={{padding:"10px", margin:"5px"}} className="p-button p-button-success" onClick={() => approveSubmission(rowData.id)}>Approve</button>
-      <button style={{padding:"10px", margin:"5px"}} className="p-button p-button-danger" onClick={() => rejectSubmission(rowData.id)}>Reject</button>
-    </div>
-  );
+  const onDownloadPaper = () => {
+
+  }
+
+  const approve = () => {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '70px' }}>
+      <FontAwesomeIcon color='green' icon={faThumbsUp} />
+      </div>
+    )
+  }
+
+  const reject = () => {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '50px' }}>
+        <FontAwesomeIcon color='red' icon={faThumbsDown} />
+      </div>
+    )
+  }
 
   const onCommentChange = (event, rowData) => {
     const updatedSubmissions = [...submissions];
@@ -61,24 +79,41 @@ const EditorDashboard = () => {
     );
   };
 
-  return (
-    <div>
-      <h2>Welcome {sessionStorage.getItem("firstName") + " " + sessionStorage.getItem("lastName")}</h2>
+  const downloadIcon = () => {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '80px' }}>
+        <FontAwesomeIcon color='blue' icon={faFileArrowDown} />
+      </div>
+    )
+  }
 
+  const onLogout = () =>{
+    navigate('/')
+  }
+
+  return (
+    <div style={{ marginTop: '25px' }}>
+      <div style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'center'}} >
+      
+      <h2 style={{display:'block', marginLeft:'25px', marginRight:'auto'}}>Welcome {sessionStorage.getItem("firstName") + " " + sessionStorage.getItem("lastName")}</h2>
+      <Button style={{display:'block', marginLeft:'auto', marginRight:'20px'}} onClick={onLogout} label='Logout' outlined severity='danger'/>
+      </div>
       <h1>Journal Submissions</h1>
       <div className="p-grid p-justify-center">
-      <div className="p-col-8">
-        <h1>Editor's Dashboard</h1>
-        <DataTable value={submissions}>
-          <Column field="title" header="Title" />
-          <Column field="domain" header="Domain" />
-          <Column field="description" header="Description" />
-          <Column body={actionTemplate} header="Actions" />
-          <Column field="comment" header="Comment" editor={commentEditor} />
+        <div className="p-col-8">
+          <h1>Editor's Dashboard</h1>
+          <DataTable value={submissions}>
+            <Column field="title" header="Title" />
+            <Column field="domain" header="Domain" />
+            <Column field="description" header="Description" />
+            <Column body={approve} header="Approve" />
+            <Column body={reject} header="Reject" />
+            <Column body={downloadIcon} header="Download" />
+            <Column field="comment" header="Comment" editor={commentEditor} />
 
-        </DataTable>
+          </DataTable>
+        </div>
       </div>
-    </div>
     </div>
   )
 }

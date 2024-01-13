@@ -42,7 +42,7 @@ export default function Navbar() {
           <FontAwesomeIcon icon={faHouse} /> Home
         </span>
       ),
-      url: "/home"
+      url: "/"
     },
     {
 
@@ -60,17 +60,7 @@ export default function Navbar() {
           <FontAwesomeIcon icon={faNewspaper} /> Journals
         </span>
       ),
-    },
-    {
-
-      icon: (
-        <span>
-          <FontAwesomeIcon icon={faRectangleList} /> Register
-        </span>
-      ),
-
-      url: "/register"
-    },
+    }
   ];
 
   const start = (
@@ -88,7 +78,7 @@ export default function Navbar() {
     ;
 
   return (
-    <div className="card"  style={{position:"fixed", width:"100%", zIndex:'1000'}}>
+    <div className="card"  style={{ width:"100%", zIndex:'1000'}}>
       <Menubar /* className="navbar-container" style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 999 }} */ model={items} start={start} />
       {/* <i className="fa-regular fa-rectangle-list"></i> */}
     </div>
