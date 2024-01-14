@@ -46,7 +46,7 @@ const UserDashboard = () => {
     editorsName: "",
     editorsContact: "",
     editorsEmail: "",
-    domain:selectedDomain,
+    domain: selectedDomain,
     reviewers: [reviewersList]
   });
 
@@ -126,7 +126,7 @@ const UserDashboard = () => {
     }
   };
 
-  
+
 
   const columns = [
     { field: 'title', header: 'Title' },
@@ -139,15 +139,15 @@ const UserDashboard = () => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-     axios.get("http://localhost:8080/domain/findAll").then((response) =>{
-        setDomainNames(response.data);
-        console.log(domainNames);
-        setCount(100)
-     })
-  },[count])
+    axios.get("http://localhost:8080/domain/findAll").then((response) => {
+      setDomainNames(response.data);
+      console.log(domainNames);
+      setCount(100)
+    })
+  }, [count])
 
-  
- 
+
+
 
   return (
     <div >
@@ -194,8 +194,8 @@ const UserDashboard = () => {
                     <label style={{ fontWeight: "bold" }} htmlFor="domainName">
                       Domain Name
                     </label>
-                    <div className="card flex justify-content-center" style={{marginTop:'10px'}}>
-                      <Dropdown style={{height: '39px.59px', color:'black'}} value={selectedDomain} onChange={(e) => setSelectedDomain(e.value)} options={domainNames} optionLabel="domainName"
+                    <div className="card flex justify-content-center" style={{ marginTop: '10px' }}>
+                      <Dropdown style={{ height: '39px.59px', color: 'black' }} value={selectedDomain} onChange={(e) => setSelectedDomain(e.value)} options={domainNames} optionLabel="domainName"
                         placeholder="Select a Domain" className=" w-full" />
                     </div>
                   </div>
@@ -228,7 +228,7 @@ const UserDashboard = () => {
                     />
                   </div>
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'row' }}>
+                {/* <div style={{ display: 'flex', flexDirection: 'row' }}>
                   <div className="p-field">
                     <label style={{ fontWeight: "bold" }} htmlFor="reviewersName">
                       Editor's Name
@@ -255,9 +255,9 @@ const UserDashboard = () => {
                       onChange={handleChange}
                     />
                   </div>
-                </div>
+                </div> */}
                 <div style={{ display: 'flex', flexDirection: 'row' }}>
-                  <div className="p-field">
+                  {/* <div className="p-field">
                     <label style={{ fontWeight: "bold" }} htmlFor="reviewersName">
                       Editor's Email
                     </label>
@@ -269,30 +269,30 @@ const UserDashboard = () => {
                       value={submission.editorsEmail}
                       onChange={handleChange}
                     />
-                  </div>
+                  </div> */}
                   <div
-                  style={{ fontWeight: "bold" }}
-                  className="p-field"
-                >
-                  <label htmlFor="role">Upload Journal</label>
-                  <br />
-                  <input
-                    style={{ marginLeft: "90px", marginTop: "10px", display: 'flex', justifyContent: 'center' }}
-                    type="file"
-                    accept=".pdf, .doc"
-                    onChange={(event) => {
-                      setSelectedFile(event.target.files[0]);
-                    }}
-                  />
-                </div>
-                  
+                    style={{ fontWeight: "bold" }}
+                    className="p-field"
+                  >
+                    <label htmlFor="role">Upload Journal</label>
+                    <br />
+                    <input
+                      style={{ marginLeft: "90px", marginTop: "10px", display: 'flex', justifyContent: 'center' }}
+                      type="file"
+                      accept=".pdf, .doc"
+                      onChange={(event) => {
+                        setSelectedFile(event.target.files[0]);
+                      }}
+                    />
+                  </div>
+
                 </div>
                 <div>
-                <DataGrid/>  
+                  <DataGrid />
                 </div>
               </div>
-              <div className="p-field" style={{width:'100%'}}>
-                <Button  onClick={handleSubmit} type="submit" label="Submit" />
+              <div className="p-field" style={{ width: '100%' }}>
+                <Button onClick={handleSubmit} type="submit" label="Submit" />
               </div>
             </form>
           </div>
