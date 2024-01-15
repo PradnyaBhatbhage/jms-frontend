@@ -16,6 +16,7 @@ import ReviewerDashBoard from './pages/ReviewerDashBoard';
 import EditorDashboard from './pages/EditorDashboard';
 import About from './pages/About';
 import Home from './pages/Home';
+import AuthorsGuidelines from './pages/AuthorsGuidelines';
 function App() {
 
   return (
@@ -35,6 +36,7 @@ function App() {
             <Route path="/reviewer-dashboard" element={<ReviewerDashBoard/>}></Route>
             <Route path="/editor-dashboard" element={<EditorDashboard/>}></Route>
             <Route path="/about" element={<About/>}></Route>
+            <Route path="/authorGuidelines" element={<AuthorsGuidelines/>}></Route>
           </Routes>
         </BrowserRouter>
     </PrimeReactProvider>

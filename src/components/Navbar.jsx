@@ -8,6 +8,7 @@ import {
   faSignIn,
   faRectangleList,
   faUser,
+  faFileLines,
 } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -70,7 +71,16 @@ export default function Navbar() {
           <FontAwesomeIcon icon={faUser} /> Author
         </span>
       ),
-      url: "/about"
+      items: [
+        {
+          icon: (
+          <span>
+            <FontAwesomeIcon icon={faFileLines} /> Author Guidelines
+          </span>
+        ),
+        url:"/authorGuidelines"
+        }
+      ]
     }
   ];
 

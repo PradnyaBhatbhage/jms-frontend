@@ -1,0 +1,46 @@
+p {
+    text-align: left;
+}
+
+ul{
+    text-align: left;
+}
+
+ol{
+    text-align: left;
+}
+
+.para{
+    margin:25px
+}
+
+h4{
+    text-align: left;
+    font-weight: bold;
+}
+
+h3{
+    text-align: left;
+    font-weight: bold;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+  h5{
+    text-align: left;
+    font-weight: bold;
+  }
