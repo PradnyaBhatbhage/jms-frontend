@@ -11,9 +11,9 @@ const About = () => {
   //   <h3>Our Mission</h3>
   // );
   return (
-    <div>
+    <div style={{ marginTop: "20px" }}>
       <header>
-        <h1>About Textile Association India (TAI)</h1>
+        <h1>About The Textile Association India (TAI)</h1>
       </header>
 
       {/* <section>
@@ -26,7 +26,7 @@ const About = () => {
         </p>
       </section> */}
 
-      <div className="container" style={{marginTop:"80px"}}>
+      <div className="container" style={{ marginTop: "80px" }}>
         <div className="text">
 
           <p>The Textile Association (India) established in the year 1939, is the foremost leading and largest Nonprofit making
@@ -65,7 +65,7 @@ const About = () => {
         </Card>
       </div> */}
 
-      <div style={{ padding: "20px", display: "flex", width:"100%", flexDirection:"row" }} className="card flex justify-content-center">
+      <div style={{ padding: "20px", display: "flex", width: "100%", flexDirection: "row" }} className="card flex justify-content-center">
         <Card style={{ width: "275px", margin: "20px" }} title="Our Mission">
           <p>To conduct the programmes for textile professionals and technocrats with an aim to achieve their continuous growth and development,
             which will enhance industrial Performance in terms of quality and productivity.
@@ -111,7 +111,34 @@ const About = () => {
         <p>&copy; 2023 Journal Submission Feature. All rights reserved.</p>
       </footer> */}
 
-      <MDBFooter bgColor='light' className='text-center text-lg-start text-muted'>
+      <MDBFooter className='text-center text-lg-start text-white' style={{ backgroundColor: "#0a4275" }}>
+        {/* <section className='d-flex justify-content-center justify-content-lg-between p-4 border-bottom'>
+                    <div className='me-5 d-none d-lg-block'>
+                        <span>Get connected with us on social networks:</span>
+                    </div>
+
+                    <div>
+                        <a href='' className='me-4 text-reset'>
+                            <MDBIcon color='secondary' fab icon='facebook-f' />
+                        </a>
+                        <a href='' className='me-4 text-reset'>
+                            <MDBIcon color='secondary' fab icon='twitter' />
+                        </a>
+                        <a href='' className='me-4 text-reset'>
+                            <MDBIcon color='secondary' fab icon='google' />
+                        </a>
+                        <a href='' className='me-4 text-reset'>
+                            <MDBIcon color='secondary' fab icon='instagram' />
+                        </a>
+                        <a href='' className='me-4 text-reset'>
+                            <MDBIcon color='secondary' fab icon='linkedin' />
+                        </a>
+                        <a href='' className='me-4 text-reset'>
+                            <MDBIcon color='secondary' fab icon='github' />
+                        </a>
+                    </div>
+                </section> */}
+
         <section className=''>
           <MDBContainer className='text-center text-md-start mt-5'>
             <MDBRow className='mt-3'>
@@ -217,7 +244,7 @@ const About = () => {
           </MDBContainer>
         </section>
 
-        <div className='text-center p-4' style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)' }}>
+        <div className='text-center p-4' style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
           Journal Of Textile Association | © Copyright 2023 | All rights reserved.
           {/* <a className='text-reset fw-bold' href='https://mdbootstrap.com/'>
                         MDBootstrap.com

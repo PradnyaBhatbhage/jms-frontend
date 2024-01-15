@@ -18,17 +18,17 @@ const Home = () => {
     ); */
     const navigate = useNavigate();
 
-    const onLogin = () =>{
+    const onLogin = () => {
         navigate("/login")
     }
 
-    const onRegister = () =>{
+    const onRegister = () => {
         navigate("/register");
     }
     return (
-        <div>
+        <div style={{ marginTop: "20px" }}>
             <header>
-                <h1>Journal Of Textile Association (JTA)</h1>
+                <h1>Journal Of The Textile Association (JTA)</h1>
             </header>
 
             <div className="container">
@@ -82,7 +82,7 @@ const Home = () => {
             {/* footer */}
 
 
-            <MDBFooter bgColor='light' className='text-center text-lg-start text-muted'>
+            <MDBFooter className='text-center text-lg-start text-white' style={{ backgroundColor: "#0a4275" }}>
                 {/* <section className='d-flex justify-content-center justify-content-lg-between p-4 border-bottom'>
                     <div className='me-5 d-none d-lg-block'>
                         <span>Get connected with us on social networks:</span>
@@ -215,7 +215,7 @@ const Home = () => {
                     </MDBContainer>
                 </section>
 
-                <div className='text-center p-4' style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)' }}>
+                <div className='text-center p-4' style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
                     Journal Of Textile Association | © Copyright 2023 | All rights reserved.
                     {/* <a className='text-reset fw-bold' href='https://mdbootstrap.com/'>
                         MDBootstrap.com
