@@ -6,26 +6,7 @@ import { InputText } from 'primereact/inputtext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFileArrowDown, faThumbsDown, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 const ReviewerDashBoard = () => {
-  const [submissions, setSubmissions] = useState([
-    {
-      id: 1,
-      title: 'Research Paper 1',
-      domain: 'Science',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    },
-    {
-      id: 2,
-      title: 'Research Paper 2',
-      domain: 'Technology',
-      description: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    },
-    {
-      id: 3,
-      title: 'Research Paper 3',
-      domain: 'Medicine',
-      description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
-    },
-  ]);
+  const [submissions, setSubmissions] = useState([]);
 
   const approve = () => {
     return (
@@ -50,7 +31,18 @@ const ReviewerDashBoard = () => {
       </div>
     )
   }
-  
+
+  axios
+        .post("http://localhost:8080/submission/fetchByEmail", form, {
+          header: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((response) => {
+         setSubmissions(response.data);
+        });
+   
+
 
   const approveSubmission = (submissionId) => {
     // Add your approval logic here

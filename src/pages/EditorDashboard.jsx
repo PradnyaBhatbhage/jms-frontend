@@ -110,7 +110,6 @@ const EditorDashboard = () => {
             <Column body={reject} header="Reject" />
             <Column body={downloadIcon} header="Download" />
             <Column field="comment" header="Comment" editor={commentEditor} />
-
           </DataTable>
         </div>
       </div>

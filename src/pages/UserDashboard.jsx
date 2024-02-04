@@ -47,7 +47,7 @@ const UserDashboard = () => {
     editorsContact: "",
     editorsEmail: "",
     domain: selectedDomain,
-    reviewers: [reviewersList]
+    reviewers: reviewersList
   });
 
 
@@ -97,6 +97,8 @@ const UserDashboard = () => {
 
   const handleSubmit = (e) => {
     const form = new FormData();
+    submission.reviewers = reviewersList;
+    console.log('Reviewers List',submission.reviewers)
     form.append("file", selectedFile);
     console.log(form);
     if (submission.title === "" && submission.domainName === "") {
@@ -147,6 +149,11 @@ const UserDashboard = () => {
   }, [count])
 
 
+  const handleGridData = (data) => {
+    setReviewersList([...reviewersList, data])
+    console.log('Inside Handle Grid Data',data);
+    console.log('Data From Grid' , reviewersList);
+  }
 
 
   return (
@@ -288,7 +295,7 @@ const UserDashboard = () => {
 
                 </div>
                 <div>
-                  <DataGrid />
+                  <DataGrid onGridDataChange={(data) => handleGridData(data)} />
                 </div>
               </div>
               <div className="p-field" style={{ width: '100%' }}>

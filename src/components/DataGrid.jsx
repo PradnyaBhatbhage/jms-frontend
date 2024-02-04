@@ -9,7 +9,7 @@ import { Button } from 'primereact/button';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
-const DataGrid = () => {
+const DataGrid = (props) => {
 
     const [visible, setVisible] = useState(false);
 
@@ -31,7 +31,7 @@ const DataGrid = () => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setReviewer({ ...reviewer, [name]: value });
-
+        
     };
 
     const toast = useRef(null);
@@ -54,10 +54,10 @@ const DataGrid = () => {
         if (count >3) {
             confirm1();
         } else {
-            console.log(reviewer);
             setReviewers([...reviewers, reviewer])
-            console.log(reviewers);
             setVisible(false);
+            console.log("Clicked On Submit")
+            props.onGridDataChange(reviewer);
             count++;
         }
 
