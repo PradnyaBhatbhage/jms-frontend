@@ -9,6 +9,7 @@ import {
   faRectangleList,
   faUser,
   faFileLines,
+  faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -65,6 +66,22 @@ export default function Navbar() {
       url: "https://www.textileassociationindia.org/jta-archives"
     },
     {
+      icon: (
+        <span>
+          <FontAwesomeIcon icon={faUsers} /> Editorial Board
+        </span>
+      ),
+      url: "/editorialBoard"
+    },
+    {
+      icon: (
+        <span>
+          <FontAwesomeIcon icon={faUsers} /> Advisory Panel
+        </span>
+      ),
+      url: "/advisoryPanel"
+    },
+    {
 
       icon: (
         <span>
@@ -74,11 +91,11 @@ export default function Navbar() {
       items: [
         {
           icon: (
-          <span>
-            <FontAwesomeIcon icon={faFileLines} /> Author Guidelines
-          </span>
-        ),
-        url:"/authorGuidelines"
+            <span>
+              <FontAwesomeIcon icon={faFileLines} /> Author Guidelines
+            </span>
+          ),
+          url: "/authorGuidelines"
         }
       ]
     }
@@ -87,20 +104,26 @@ export default function Navbar() {
   const start = (
     <img
       alt="logo"
-      src="/src/assets/Textile-Association.png"
-      height="80"
+      src="/src/assets/JTA Logo JPG (2).jpg"
+      height="60"
       className="mr-2"
     ></img>
   );
 
-
-
-
+  const end = (
+    <img
+      alt="logo"
+      src="/src/assets/TAI LOGO - NEW PNG.png"
+      height="65"
+      className="mr-2"
+    ></img>
+  );
   ;
 
   return (
     <div className="card" style={{ width: "100%", zIndex: '1000' }}>
-      <Menubar /* className="navbar-container" style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 999 }} */ model={items} start={start} />
+      <Menubar /* className="navbar-container" style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 999 }} */
+        model={items} start={start} end={end} />
       {/* <i className="fa-regular fa-rectangle-list"></i> */}
     </div>
   );

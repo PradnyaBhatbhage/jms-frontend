@@ -26,7 +26,7 @@ const Home = () => {
         navigate("/register");
     }
     return (
-        <div style={{ marginTop: "20px" }}>
+        <div style={{ marginTop: "30px" }}>
             <header>
                 <h1>Journal Of The Textile Association (JTA)</h1>
             </header>
@@ -148,12 +148,12 @@ const Home = () => {
                             <MDBCol md='2' lg='2' xl='2' className='mx-auto mb-4'>
                                 <h6 className='text-uppercase fw-bold mb-4'>Company</h6>
                                 <p>
-                                    <a href='#!' className='text-reset'>
+                                    <a href='/about' className='text-reset'>
                                         About
                                     </a>
                                 </p>
                                 <p>
-                                    <a href='#!' className='text-reset'>
+                                    <a href='https://www.textileassociationindia.org/jta-archives' className='text-reset'>
                                         Journal
                                     </a>
                                 </p>
