@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFileArrowDown, faThumbsDown, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
 const ReviewerDashBoard = () => {
   const [submissions, setSubmissions] = useState([]);
 
   const approve = () => {
     return (
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '70px' }}>
-      <FontAwesomeIcon color='green' icon={faThumbsUp} />
+        <FontAwesomeIcon color='green' icon={faThumbsUp} />
       </div>
     )
   }
@@ -23,7 +24,7 @@ const ReviewerDashBoard = () => {
       </div>
     )
   }
-  
+
   const downloadIcon = () => {
     return (
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '80px' }}>
@@ -32,16 +33,21 @@ const ReviewerDashBoard = () => {
     )
   }
 
-  axios
-        .post("http://localhost:8080/submission/fetchByEmail", form, {
-          header: {
-            "Content-Type": "multipart/form-data",
-          },
-        })
-        .then((response) => {
-         setSubmissions(response.data);
-        });
-   
+
+
+  useEffect(() => {
+    axios.get("http://localhost:8080/submission/fetchBySubmissionsByEmail", {
+      params: {
+        email: sessionStorage.getItem("email"),
+      }
+    })
+      .then((response) => {
+        console.log('email:', sessionStorage.getItem("email"))
+        setSubmissions(response.data);
+        console.log(submissions)
+      });
+  },[])
+ 
 
 
   const approveSubmission = (submissionId) => {
@@ -79,20 +85,20 @@ const ReviewerDashBoard = () => {
 
       <h1>Journal Submissions</h1>
       <div className="p-grid p-justify-center">
-      <div className="p-col-8">
-        <h1>Reviewer Dashboard</h1>
-        <DataTable value={submissions}>
-          <Column field="title" header="Title" />
-          <Column field="domain" header="Domain" />
-          <Column field="description" header="Description" />
-          <Column body={approve} header="Approve" />
-          <Column body={reject} header="Reject" />
-          <Column body={downloadIcon} header='Download'/>
-          <Column field="comment" header="Comment" editor={commentEditor} />
+        <div className="p-col-8">
+          <h1>Reviewer Dashboard</h1>
+          <DataTable value={submissions}>
+            <Column field="title" header="Title" />
+            <Column field="domain" header="Domain" />
+            <Column field="description" header="Description" />
+            <Column body={approve} header="Approve" />
+            <Column body={reject} header="Reject" />
+            <Column body={downloadIcon} header='Download' />
+            <Column field="comment" header="Comment" editor={commentEditor} />
 
-        </DataTable>y
+          </DataTable>
+        </div>
       </div>
-    </div>
     </div>
   )
 }
