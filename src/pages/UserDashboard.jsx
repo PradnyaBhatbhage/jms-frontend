@@ -98,7 +98,7 @@ const UserDashboard = () => {
   const handleSubmit = (e) => {
     const form = new FormData();
     submission.reviewers = reviewersList;
-    console.log('Reviewers List',submission.reviewers)
+    console.log('Reviewers List', submission.reviewers)
     form.append("file", selectedFile);
     console.log(form);
     if (submission.title === "" && submission.domainName === "") {
@@ -151,8 +151,8 @@ const UserDashboard = () => {
 
   const handleGridData = (data) => {
     setReviewersList([...reviewersList, data])
-    console.log('Inside Handle Grid Data',data);
-    console.log('Data From Grid' , reviewersList);
+    console.log('Inside Handle Grid Data', data);
+    console.log('Data From Grid', reviewersList);
   }
 
 

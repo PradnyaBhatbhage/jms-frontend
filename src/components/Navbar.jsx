@@ -92,6 +92,14 @@ export default function Navbar() {
         {
           icon: (
             <span>
+              <FontAwesomeIcon icon={faFileLines} /> Author Login
+            </span>
+          ),
+          url: "/login"
+        },
+        {
+          icon: (
+            <span>
               <FontAwesomeIcon icon={faFileLines} /> Author Guidelines
             </span>
           ),

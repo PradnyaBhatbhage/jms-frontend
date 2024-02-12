@@ -83,32 +83,26 @@ const Home = () => {
 
 
             <MDBFooter className='text-center text-lg-start text-white' style={{ backgroundColor: "#0a4275" }}>
-                {/* <section className='d-flex justify-content-center justify-content-lg-between p-4 border-bottom'>
+                <section className='d-flex justify-content-center justify-content-lg-between p-4 border-bottom'>
                     <div className='me-5 d-none d-lg-block'>
                         <span>Get connected with us on social networks:</span>
                     </div>
 
                     <div>
-                        <a href='' className='me-4 text-reset'>
-                            <MDBIcon color='secondary' fab icon='facebook-f' />
+                        <a href='https://www.facebook.com/Textile.Association' className='me-4 text-reset'>
+                            <MDBIcon color='white' fab icon='facebook-f' />
                         </a>
-                        <a href='' className='me-4 text-reset'>
-                            <MDBIcon color='secondary' fab icon='twitter' />
+                        <a href='https://twitter.com/textile_in' className='me-4 text-reset'>
+                            <MDBIcon color='white' fab icon='twitter' />
                         </a>
-                        <a href='' className='me-4 text-reset'>
-                            <MDBIcon color='secondary' fab icon='google' />
+                        <a href='https://www.textileassociationindia.org/' className='me-4 text-reset'>
+                            <MDBIcon color='white' fab icon='google' />
                         </a>
-                        <a href='' className='me-4 text-reset'>
-                            <MDBIcon color='secondary' fab icon='instagram' />
-                        </a>
-                        <a href='' className='me-4 text-reset'>
-                            <MDBIcon color='secondary' fab icon='linkedin' />
-                        </a>
-                        <a href='' className='me-4 text-reset'>
-                            <MDBIcon color='secondary' fab icon='github' />
+                        <a href='https://www.linkedin.com/in/tai-india-003093a1/?originalSubdomain=in' className='me-4 text-reset'>
+                            <MDBIcon color='white' fab icon='linkedin' />
                         </a>
                     </div>
-                </section> */}
+                </section>
 
                 <section className=''>
                     <MDBContainer className='text-center text-md-start mt-5'>

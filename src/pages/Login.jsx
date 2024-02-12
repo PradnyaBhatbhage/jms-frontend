@@ -9,9 +9,9 @@ const Login = () => {
     password: "",
   });
 
-  
 
-  
+
+
 
   const validateEmail = (email) => {
     // Regular expression for email validation
@@ -34,32 +34,32 @@ const Login = () => {
       e.preventDefault();
       console.log(loginData);
       axios
-        .get("http://localhost:8080/users/getUser",{ 
-          params:{
+        .get("http://localhost:8080/users/getUser", {
+          params: {
             email: loginData.email,
             password: loginData.password
-          },           
+          },
         })
         .then((response) => {
           const userData = response.data;
           console.log(response.data);
           alert("Sign Successfully");
-          sessionStorage.setItem("firstName",userData.firstName);
-          sessionStorage.setItem("lastName",userData.lastName);
+          sessionStorage.setItem("firstName", userData.firstName);
+          sessionStorage.setItem("lastName", userData.lastName);
           sessionStorage.setItem("accountNo", userData.accountNo)
-          sessionStorage.setItem("email",userData.email);
+          sessionStorage.setItem("email", userData.email);
           sessionStorage.setItem("role", userData.role);
           console.log(sessionStorage.getItem("email"))
-          if(sessionStorage.getItem("role") === "user"){
+          if (sessionStorage.getItem("role") === "user") {
             navigate('/user-dashboard');
           }
-          if(sessionStorage.getItem("role") === "reviewer"){
+          if (sessionStorage.getItem("role") === "reviewer") {
             navigate('/reviewer-dashboard');
           }
-          if(sessionStorage.getItem("role") === "editor"){
+          if (sessionStorage.getItem("role") === "editor") {
             navigate('/editor-dashboard');
           }
-          
+
         })
 
         .catch((error) => {
@@ -70,7 +70,7 @@ const Login = () => {
 
   return (
     <div className="user-form" >
-      <form onSubmit={handleSubmit} style={{marginTop:"150px"}}>
+      <form onSubmit={handleSubmit} style={{ marginTop: "150px" }}>
         <h2>Login</h2>
         <div className="p-field">
           <label htmlFor="email">Email Id</label>
@@ -94,12 +94,13 @@ const Login = () => {
           />
         </div>
         <div className="p-field">
-        <Button type="submit" label="Submit" style={{marginTop:'10px',marginLeft:'15px', width:"200px"}} />
-        <Button type="submit" label="Forgot Password" severity="help" style={{marginTop:'10px', marginLeft:'15px',width:'200px'}}/>
+          <Button type="submit" label="Submit" style={{ marginTop: '10px', marginLeft: '15px', width: "200px" }} />
+          <Button type="submit" label="Forgot Password" severity="help" style={{ marginTop: '10px', marginLeft: '15px', width: '200px' }} />
         </div>
-       
+
       </form>
     </div>
+
   );
 };
 
