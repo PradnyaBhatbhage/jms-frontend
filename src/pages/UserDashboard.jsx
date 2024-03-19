@@ -139,20 +139,38 @@ const UserDashboard = () => {
 
   const [domainNames, setDomainNames] = useState([]);
   const [count, setCount] = useState(0);
+  const otherDomain = {
+    id: 0,
+    domainName: 'Other'
+  }
+
+  const [isDisabled, setIsDisabled] = useState(true)
+
+  
 
   useEffect(() => {
     axios.get("http://localhost:8080/domain/findAll").then((response) => {
-      setDomainNames(response.data);
-      console.log(domainNames);
-      setCount(100)
+      const updatedDomainNames = [...response.data, otherDomain];
+      setDomainNames(updatedDomainNames);
+      console.log(updatedDomainNames);
     })
   }, [count])
-
 
   const handleGridData = (data) => {
     setReviewersList([...reviewersList, data])
     console.log('Inside Handle Grid Data', data);
     console.log('Data From Grid', reviewersList);
+  }
+
+  const domainName = '';
+
+  const onDropDownChangeValue = (value) => {
+    if(value.domainName === 'Other'){
+      setIsDisabled(false)
+    }else{
+      setIsDisabled(true)
+    }
+    setSelectedDomain(value);
   }
 
 
@@ -202,11 +220,25 @@ const UserDashboard = () => {
                       Domain/Subject Area
                     </label>
                     <div className="card flex justify-content-center" style={{ marginTop: '10px' }}>
-                      <Dropdown style={{ height: '39px.59px', color: 'black' }} value={selectedDomain} onChange={(e) => setSelectedDomain(e.value)} options={domainNames} optionLabel="domainName"
+                      <Dropdown style={{ height: '39px.59px', color: 'black' }} value={selectedDomain} onChange={(e) => onDropDownChangeValue(e.value)} options={domainNames} optionLabel="domainName"
                         placeholder="Select a Domain" className=" w-full" />
                     </div>
                   </div>
                 </div>
+                <div className="p-field" hidden={isDisabled}>
+                  <label style={{ fontWeight: "bold" }} htmlFor="domainName">
+                    Other Domain/Subject Area
+                  </label>
+                  <InputText
+                    className="p-inputtext-l"
+                    style={{ marginTop: "10px" }}
+                    id="domain"
+                    name="domain"
+                    value={domainName}
+                    onChange={handleChange}
+                  />
+                </div>
+
                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                   <div className="p-field" style={{ display: 'flex', flexDirection: 'column' }}>
                     <label style={{ fontWeight: "bold" }} htmlFor="organization">
@@ -235,48 +267,9 @@ const UserDashboard = () => {
                     />
                   </div>
                 </div>
-                {/* <div style={{ display: 'flex', flexDirection: 'row' }}>
-                  <div className="p-field">
-                    <label style={{ fontWeight: "bold" }} htmlFor="reviewersName">
-                      Editor's Name
-                    </label>
-                    <InputText
-                      className="p-inputtext-l"
-                      style={{ marginTop: "10px" }}
-                      id="editorsName"
-                      name="editorsName"
-                      value={submission.editorsName}
-                      onChange={handleChange}
-                    />
-                  </div>
-                  <div className="p-field">
-                    <label style={{ fontWeight: "bold" }} htmlFor="reviewersName">
-                      Editor's Contact
-                    </label>
-                    <InputText
-                      className="p-inputtext-l"
-                      style={{ marginTop: "10px" }}
-                      id="editorsName"
-                      name="editorsName"
-                      value={submission.editorsContact}
-                      onChange={handleChange}
-                    />
-                  </div>
-                </div> */}
+
                 <div style={{ display: 'flex', flexDirection: 'row' }}>
-                  {/* <div className="p-field">
-                    <label style={{ fontWeight: "bold" }} htmlFor="reviewersName">
-                      Editor's Email
-                    </label>
-                    <InputText
-                      className="p-inputtext-l"
-                      style={{ marginTop: "10px" }}
-                      id="editorsName"
-                      name="editorsName"
-                      value={submission.editorsEmail}
-                      onChange={handleChange}
-                    />
-                  </div> */}
+
                   <div
                     style={{ fontWeight: "bold" }}
                     className="p-field"
