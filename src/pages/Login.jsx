@@ -10,9 +10,6 @@ const Login = () => {
   });
 
 
-
-
-
   const validateEmail = (email) => {
     // Regular expression for email validation
     const regex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
@@ -93,6 +90,22 @@ const Login = () => {
             onChange={handleChange}
           />
         </div>
+
+
+
+        <div className="p-field">
+          <label htmlFor="password">Enter Captcha</label>
+          <br />
+          <InputText
+            type="text"
+            id="captcha"
+          />
+        </div>
+
+
+
+
+
         <div className="p-field">
           <Button type="submit" label="Submit" style={{ marginTop: '10px', marginLeft: '15px', width: "200px" }} />
           <Button type="submit" label="Forgot Password" severity="help" style={{ marginTop: '10px', marginLeft: '15px', width: '200px' }} />

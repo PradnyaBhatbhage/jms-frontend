@@ -19,7 +19,7 @@ const SignUp = () => {
   const roles = [
     { label: "Reviewer", value: "reviewer" },
     { label: "Editor", value: "editor" },
-    { label: "User", value: "user" },
+    { label: "Author", value: "user" },
     // Add more roles as needed
   ];
 
@@ -60,11 +60,11 @@ const SignUp = () => {
           "Content-Type": "application/json",
         },
       })
-      .then(() =>{
+      .then(() => {
         alert("Sign Up Was Successful.");
         navigate("/login")
 
-      }).catch((e) =>{
+      }).catch((e) => {
         console.error(e);
         alert("Sign Up Failed!!!");
       });
@@ -72,7 +72,7 @@ const SignUp = () => {
   };
   return (
     <div className="user-form">
-      <form onSubmit={handleSubmit} style={{marginTop:"150px"}}>
+      <form onSubmit={handleSubmit} style={{ marginTop: "100px" }}>
         <h2>Registration Form</h2>
         <div className="p-fluid">
           <div className="p-field">
@@ -116,13 +116,20 @@ const SignUp = () => {
           </div>
 
           <div className="p-field">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="profession">Profession</label>
             <InputText
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
+              id="profession"
+              name="profession"
+              value={formData.profession}
               onChange={handleChange}
+            />
+          </div>
+
+          <div className="p-field">
+            <label htmlFor="profession">Organisation</label>
+            <InputText
+              id="organisation"
+              name="organisation"
             />
           </div>
 
@@ -139,14 +146,24 @@ const SignUp = () => {
           </div>
 
           <div className="p-field">
-            <label htmlFor="profession">Profession</label>
+            <label htmlFor="password">Password</label>
             <InputText
-              id="profession"
-              name="profession"
-              value={formData.profession}
+              type="password"
+              id="password"
+              name="password"
+              value={formData.password}
               onChange={handleChange}
             />
           </div>
+
+          <div className="p-field">
+            <label htmlFor="password">Confirm Password</label>
+            <InputText
+              type="password"
+              id="cpassword"
+            />
+          </div>
+
         </div>
 
         <Button type="submit" label="Submit" />

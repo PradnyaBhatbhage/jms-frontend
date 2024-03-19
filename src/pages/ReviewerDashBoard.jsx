@@ -46,8 +46,8 @@ const ReviewerDashBoard = () => {
         setSubmissions(response.data);
         console.log(submissions)
       });
-  },[])
- 
+  }, [])
+
 
 
   const approveSubmission = (submissionId) => {
@@ -80,13 +80,14 @@ const ReviewerDashBoard = () => {
   };
 
   return (
-    <div>
+    <div style={{ marginTop: "20px" }}>
+      <h1>Reviewer Dashboard</h1>
       <h2>Welcome {sessionStorage.getItem("firstName") + " " + sessionStorage.getItem("lastName")}</h2>
 
-      <h1>Journal Submissions</h1>
+      {/* <h1>Journal Submissions</h1> */}
       <div className="p-grid p-justify-center">
         <div className="p-col-8">
-          <h1>Reviewer Dashboard</h1>
+
           <DataTable value={submissions}>
             <Column field="title" header="Title" />
             <Column field="domain" header="Domain" />
@@ -95,6 +96,12 @@ const ReviewerDashBoard = () => {
             <Column body={reject} header="Reject" />
             <Column body={downloadIcon} header='Download' />
             <Column field="comment" header="Comment" editor={commentEditor} />
+
+            <Column header="Date of Acceptance"></Column>
+            <Column header="Date of Submission"></Column>
+            <Column header="Upload File"> </Column>
+
+            {/* <Column field="button" header="Submit"></Column> */}
 
           </DataTable>
         </div>

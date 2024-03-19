@@ -63,6 +63,7 @@ const About = () => {
             Streamline your research journey with our innovative journal submission feature, simplifying the process of sharing your groundbreaking discoveries with the world.
           </p>
         </Card>
+
       </div> */}
 
       <div style={{ padding: "20px", display: "flex", width: "100%", flexDirection: "row" }} className="card flex justify-content-center">
@@ -181,7 +182,7 @@ const About = () => {
                   </a>
                 </p>
                 <p>
-                  <a href='#!' className='text-reset'>
+                  <a href='/contactUs' className='text-reset'>
                     Contact
                   </a>
                 </p>

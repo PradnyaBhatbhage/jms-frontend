@@ -19,6 +19,7 @@ import Home from './pages/Home';
 import AuthorsGuidelines from './pages/AuthorsGuidelines';
 import EditorialBoard from './pages/EditorialBoard';
 import AdvisoryPanel from './pages/AdvisoryPanel';
+import ContactUs from './pages/ContactUs';
 
 
 function App() {
@@ -43,10 +44,11 @@ function App() {
             <Route path="/authorGuidelines" element={<AuthorsGuidelines />}></Route>
             <Route path="/editorialBoard" element={<EditorialBoard />}></Route>
             <Route path="/advisoryPanel" element={<AdvisoryPanel />}></Route>
+            <Route path="/contactUs" element={<ContactUs />}></Route>
 
           </Routes>
         </BrowserRouter>
-      </PrimeReactProvider>
+      </PrimeReactProvider >
 
     </>
   )

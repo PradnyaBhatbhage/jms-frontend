@@ -82,7 +82,7 @@ const Upload = () => {
   return (
     <div className="upload-div">
       <form>
-        <h2>Upload Journal</h2>
+        <h2>Upload Manuscript</h2>
 
         <div className="p-fluid">
           <div style={{ display: 'flex', flexDirection: 'row' }}>
@@ -184,7 +184,7 @@ const Upload = () => {
               style={{ fontWeight: "bold" }}
               className="p-field"
             >
-              <label htmlFor="role">Upload Journal</label>
+              <label htmlFor="role">Upload Manuscript</label>
               <br />
               <input
                 style={{ marginLeft: "90px", marginTop: "10px", display: 'flex', justifyContent: 'center' }}

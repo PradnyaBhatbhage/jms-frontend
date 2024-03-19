@@ -106,6 +106,14 @@ export default function Navbar() {
           url: "/authorGuidelines"
         }
       ]
+    },
+    {
+      icon: (
+        <span>
+          <FontAwesomeIcon icon={faUsers} /> Contact Us
+        </span>
+      ),
+      url: "/contactUs"
     }
   ];
 

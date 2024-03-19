@@ -300,7 +300,7 @@ const EditorialBoard = () => {
                                     </a>
                                 </p>
                                 <p>
-                                    <a href='#!' className='text-reset'>
+                                    <a href='/contactUs' className='text-reset'>
                                         Contact
                                     </a>
                                 </p>

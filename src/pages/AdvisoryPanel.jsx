@@ -36,7 +36,7 @@ const AdvisoryPanel = () => {
                                     Representative Director (India)<br></br>
                                     Frontier Cool Inc., Taiwan<br></br>
                                     Former Head, Textile Engg. Department, VJTI<br></br>
-                                    Email: vdgotmare@gmail.com<br></br>vdgotmare@vjti.org.in
+                                    Email: vdgotmare@gmail.com
                                 </MDBCardText>
                             </MDBCardBody>
                         </MDBCol>
@@ -241,7 +241,7 @@ const AdvisoryPanel = () => {
                                     </a>
                                 </p>
                                 <p>
-                                    <a href='#!' className='text-reset'>
+                                    <a href='/contactUs' className='text-reset'>
                                         Contact
                                     </a>
                                 </p>

@@ -65,7 +65,7 @@ const Home = () => {
                     </div>
                 </div>
 
-                <div className="image" style={{ marginTop: "95px", paddingTop: "0px" }}>
+                <div className="image" style={{ marginTop: "80px", marginBottom: "15px", paddingTop: "0px" }}>
                     <img style={{ height: 700, width: 500 }} src="src/assets/j1.jpg" alt="Your Image" />
                 </div>
             </div>
@@ -152,7 +152,7 @@ const Home = () => {
                                     </a>
                                 </p>
                                 <p>
-                                    <a href='#!' className='text-reset'>
+                                    <a href='/contactUs' className='text-reset'>
                                         Contact
                                     </a>
                                 </p>

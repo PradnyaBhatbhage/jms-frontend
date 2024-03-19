@@ -122,7 +122,7 @@ const UserDashboard = () => {
           header: { "Content-Type": "application/json" },
         })
         .then((response) => {
-          alert("Journal Uploaded Successfully");
+          alert("Manuscript Uploaded Successfully");
           console.log(response);
         });
     }
@@ -176,10 +176,10 @@ const UserDashboard = () => {
             culpa qui officia deserunt mollit anim id est laborum.
           </p>
         </TabPanel>
-        <TabPanel header="Upload Journal">
+        <TabPanel header="Upload Manuscript">
           <div className="upload-div">
             <form>
-              <h2>Upload Journal</h2>
+              <h2>Upload Manuscript</h2>
 
               <div className="p-fluid">
                 <div style={{ display: 'flex', flexDirection: 'row' }}>
@@ -199,7 +199,7 @@ const UserDashboard = () => {
 
                   <div className="p-field">
                     <label style={{ fontWeight: "bold" }} htmlFor="domainName">
-                      Domain Name
+                      Domain/Subject Area
                     </label>
                     <div className="card flex justify-content-center" style={{ marginTop: '10px' }}>
                       <Dropdown style={{ height: '39px.59px', color: 'black' }} value={selectedDomain} onChange={(e) => setSelectedDomain(e.value)} options={domainNames} optionLabel="domainName"
@@ -223,7 +223,7 @@ const UserDashboard = () => {
                   </div>
                   <div className="p-field">
                     <label style={{ fontWeight: "bold" }} htmlFor="description">
-                      Description
+                      Abstract
                     </label>
                     <InputText
                       className="p-inputtext-l"
@@ -281,12 +281,13 @@ const UserDashboard = () => {
                     style={{ fontWeight: "bold" }}
                     className="p-field"
                   >
-                    <label htmlFor="role">Upload Journal</label>
+                    <label htmlFor="role">Attach Manuscript</label>
                     <br />
                     <input
                       style={{ marginLeft: "90px", marginTop: "10px", display: 'flex', justifyContent: 'center' }}
                       type="file"
-                      accept=".pdf, .doc"
+                      // accept=".pdf, .doc"
+                      accept=".doc"
                       onChange={(event) => {
                         setSelectedFile(event.target.files[0]);
                       }}
@@ -304,7 +305,7 @@ const UserDashboard = () => {
             </form>
           </div>
         </TabPanel>
-        <TabPanel header="History">
+        <TabPanel header="Status Of Manuscript">
           <div className="card">
             <DataTable value={submissionData} tableStyle={{ minWidth: '50rem' }}>
 
