@@ -146,7 +146,7 @@ const UserDashboard = () => {
 
   const [isDisabled, setIsDisabled] = useState(true)
 
-  
+
 
   useEffect(() => {
     axios.get("http://localhost:8080/domain/findAll").then((response) => {
@@ -165,9 +165,9 @@ const UserDashboard = () => {
   const domainName = '';
 
   const onDropDownChangeValue = (value) => {
-    if(value.domainName === 'Other'){
+    if (value.domainName === 'Other') {
       setIsDisabled(false)
-    }else{
+    } else {
       setIsDisabled(true)
     }
     setSelectedDomain(value);
@@ -176,13 +176,13 @@ const UserDashboard = () => {
 
   return (
     <div >
-      <h2>
+      <h2 style={{ marginTop: "20px" }}>
         Welcome{" "}
         {sessionStorage.getItem("firstName") +
           " " +
           sessionStorage.getItem("lastName")}
       </h2>
-      <TabView style={{ marginTop: "90px", paddingTop: "0px" }}>
+      <TabView style={{ marginTop: "60px", paddingTop: "0px" }}>
         <TabPanel header="Profile">
           <p className="m-0">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -203,7 +203,7 @@ const UserDashboard = () => {
                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                   <div className="p-field">
                     <label style={{ fontWeight: "bold" }} htmlFor="title">
-                      Title
+                      Title Of Paper
                     </label>
                     <InputText
                       className="p-inputtext-l"
@@ -288,7 +288,7 @@ const UserDashboard = () => {
                   </div>
 
                 </div>
-                <div>
+                <div style={{ marginTop: "10px" }}>
                   <DataGrid onGridDataChange={(data) => handleGridData(data)} />
                 </div>
               </div>
