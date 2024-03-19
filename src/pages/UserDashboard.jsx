@@ -177,10 +177,10 @@ const UserDashboard = () => {
 
   const onFileUpload = (event) => {
     const file = event.target.files[0];
-    if(file && file.size > MAX_FILE_SIZE_MB * 1024 *1024){
+    if (file && file.size > MAX_FILE_SIZE_MB * 1024 * 1024) {
       alert('File should be less than ' + MAX_FILE_SIZE_MB + 'mb')
-    }else{
-        setSelectedFile(file)
+    } else {
+      setSelectedFile(file)
     }
   }
 
@@ -291,7 +291,7 @@ const UserDashboard = () => {
                     <input
                       style={{ marginLeft: "90px", marginTop: "10px", display: 'flex', justifyContent: 'center' }}
                       type="file"
-                      
+
                       // accept=".pdf, .doc"
                       accept=".doc"
                       onChange={onFileUpload}
