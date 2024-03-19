@@ -67,6 +67,8 @@ const UserDashboard = () => {
   //     });
   // }, [submissionData]);
 
+  const MAX_FILE_SIZE_MB = 20;
+
   const fetchData = () => {
     axios.get("http://localhost:8080/submission/fetchByEmail", {
       params: {
@@ -173,6 +175,15 @@ const UserDashboard = () => {
     setSelectedDomain(value);
   }
 
+  const onFileUpload = (event) => {
+    const file = event.target.files[0];
+    if(file && file.size > MAX_FILE_SIZE_MB * 1024 *1024){
+      alert('File should be less than ' + MAX_FILE_SIZE_MB + 'mb')
+    }else{
+        setSelectedFile(file)
+    }
+  }
+
 
   return (
     <div >
@@ -262,6 +273,7 @@ const UserDashboard = () => {
                       style={{ marginTop: "10px" }}
                       id="description"
                       name="description"
+                      maxLength={200}
                       value={submission.description}
                       onChange={handleChange}
                     />
@@ -279,11 +291,10 @@ const UserDashboard = () => {
                     <input
                       style={{ marginLeft: "90px", marginTop: "10px", display: 'flex', justifyContent: 'center' }}
                       type="file"
+                      
                       // accept=".pdf, .doc"
                       accept=".doc"
-                      onChange={(event) => {
-                        setSelectedFile(event.target.files[0]);
-                      }}
+                      onChange={onFileUpload}
                     />
                   </div>
 
