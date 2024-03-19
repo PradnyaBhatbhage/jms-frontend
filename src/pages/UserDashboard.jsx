@@ -299,6 +299,26 @@ const UserDashboard = () => {
                   <DataGrid onGridDataChange={(data) => handleGridData(data)} />
                 </div>
               </div>
+
+              <div style={{ fontWeight: "bold", marginTop: "20px" }}>
+                <label>Payment Detail</label>
+
+                <div>
+                  <label>Transaction Number</label>
+                  <InputText
+                    style={{ marginTop: "10px", marginLeft: "10px" }}
+                    className="p-inputtext-l"
+                    id="transactionid"
+                  />
+                </div>
+
+                <label style={{ marginTop: "10px" }}>Upload Payment Receipt</label>
+                <input style={{ marginLeft: "10px", marginTop: "10px", marginBottom: "20px" }} type="file"></input>
+
+
+              </div>
+
+
               <div className="p-field" style={{ width: '100%' }}>
                 <Button onClick={handleSubmit} type="submit" label="Submit" />
               </div>

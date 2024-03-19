@@ -23,7 +23,9 @@ const DataGrid = (props) => {
     const [reviewer, setReviewer] = useState({
         reviewersName: "",
         reviewersContact: "",
-        reviewersEmail: ""
+        reviewersEmail: "",
+        reviewersDesignation: "",
+        reviewersOrganisation: ""
     });
 
 
@@ -31,7 +33,7 @@ const DataGrid = (props) => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setReviewer({ ...reviewer, [name]: value });
-        
+
     };
 
     const toast = useRef(null);
@@ -51,7 +53,7 @@ const DataGrid = (props) => {
 
 
     const onSubmit = () => {
-        if (count >3) {
+        if (count > 3) {
             confirm1();
         } else {
             setReviewers([...reviewers, reviewer])
@@ -71,13 +73,13 @@ const DataGrid = (props) => {
 
     const deleteIcon = () => {
         return (
-            <FontAwesomeIcon color='red' icon={ faTrashCan} />
+            <FontAwesomeIcon color='red' icon={faTrashCan} />
         )
     }
 
     const header = () => {
         return (
-            <div className='flex justify-content-between'>
+            <div className='flex justify-content-between' >
                 <Button onClick={handleAddButtonClick} outlined type="button" label="Add Reviewer" icon="pi-pi plus" />
             </div>
 
@@ -93,10 +95,15 @@ const DataGrid = (props) => {
 
             <DataTable value={reviewers} tableStyle={{ minWidth: '50rem' }} header={header}>
                 <Column field="reviewersName" header="Name"></Column>
-                <Column field="reviewersContact" header="Contact"></Column>
                 <Column field="reviewersEmail" header="Email"></Column>
+                <Column field="reviewersContact" header="Contact"></Column>
+
+                <Column field="reviewersDesignation" header="Designation"></Column>
+                <Column field="reviewersOrganisation" header="Organisation"></Column>
+
                 <Column field="delete" header="Delete" body={deleteIcon}></Column>
                 <Column field="edit" header="Edit" body={editIcon}></Column>
+
             </DataTable>
 
             <Dialog visible={visible} style={{ width: '450px', height: '580px' }} onHide={() => setVisible(false)}>
@@ -105,7 +112,7 @@ const DataGrid = (props) => {
                     <h3>Add Reviewer</h3>
                     <div className="p-field" >
                         <label style={{ fontWeight: "bold", alignSelf: 'center' }} htmlFor="reviewersName">
-                            Reviewer's Name
+                            Name
                         </label>
                         <InputText
                             className="p-inputtext-l"
@@ -115,21 +122,10 @@ const DataGrid = (props) => {
                             onChange={handleChange}
                         />
                     </div>
-                    <div className="p-field" style={{ display: 'flex', flexDirection: 'column' }}>
-                        <label style={{ fontWeight: "bold" }} htmlFor="reviewersContact">
-                            Reviewer's Contact No
-                        </label>
-                        <InputText
-                            className="p-inputtext-l"
-                            style={{ marginTop: "10px" }}
-                            id="reviewersContact"
-                            name="reviewersContact"
-                            onChange={handleChange}
-                        />
-                    </div>
+
                     <div className="p-field" style={{ display: 'flex', flexDirection: 'column' }}>
                         <label style={{ fontWeight: "bold" }} htmlFor="reviewersEmail">
-                            Reviewer's Email
+                            Email
                         </label>
                         <InputText
                             className="p-inputtext-l"
@@ -139,6 +135,46 @@ const DataGrid = (props) => {
                             onChange={handleChange}
                         />
                     </div>
+
+                    <div className="p-field" style={{ display: 'flex', flexDirection: 'column' }}>
+                        <label style={{ fontWeight: "bold" }} htmlFor="reviewersContact">
+                            Contact Number
+                        </label>
+                        <InputText
+                            className="p-inputtext-l"
+                            style={{ marginTop: "10px" }}
+                            id="reviewersContact"
+                            name="reviewersContact"
+                            onChange={handleChange}
+                        />
+                    </div>
+
+                    <div className="p-field" style={{ display: 'flex', flexDirection: 'column' }}>
+                        <label style={{ fontWeight: "bold" }} htmlFor="reviewersDesignation">
+                            Designation
+                        </label>
+                        <InputText
+                            className="p-inputtext-l"
+                            style={{ marginTop: "10px" }}
+                            id="reviewersDesignation"
+                            name="reviewersDesignation"
+                            onChange={handleChange}
+                        />
+                    </div>
+
+                    <div className="p-field" style={{ display: 'flex', flexDirection: 'column' }}>
+                        <label style={{ fontWeight: "bold" }} htmlFor="reviewersOrganisation">
+                            Organisation
+                        </label>
+                        <InputText
+                            className="p-inputtext-l"
+                            style={{ marginTop: "10px" }}
+                            id="reviewersOrganisation"
+                            name="reviewersOrganisation"
+                            onChange={handleChange}
+                        />
+                    </div>
+
                     <div className="p-field" style={{ display: 'flex', flexDirection: 'column' }}>
                         <Button onClick={onSubmit} type="submit" label="Submit" />
                     </div>
