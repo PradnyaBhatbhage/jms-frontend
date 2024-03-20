@@ -5,16 +5,6 @@ import { Button } from "primereact/button";
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import "/src/css/userdashboard.css";
-import { classNames } from 'primereact/utils';
-import { Toast } from 'primereact/toast';
-import { FileUpload } from 'primereact/fileupload';
-import { Rating } from 'primereact/rating';
-import { Toolbar } from 'primereact/toolbar';
-import { InputTextarea } from 'primereact/inputtextarea';
-import { RadioButton } from 'primereact/radiobutton';
-import { InputNumber } from 'primereact/inputnumber';
-import { Dialog } from 'primereact/dialog';
-import { Tag } from 'primereact/tag';
 import axios from "axios";
 import { Dropdown } from 'primereact/dropdown';
 import DataGrid from "../components/DataGrid";
@@ -28,9 +18,12 @@ function Reviewer(name, contact, email) {
 
 const UserDashboard = () => {
 
-  const [visible, setVisible] = useState(false);
+
   const [reviewersList, setReviewersList] = useState([]);
-  const [selectedDomain, setSelectedDomain] = useState();
+  const [selectedDomain, setSelectedDomain] = useState({
+    id:'',
+    domainName:''
+  });
 
   const [submission, setSubmission] = useState({
     title: "",
@@ -46,6 +39,7 @@ const UserDashboard = () => {
     editorsName: "",
     editorsContact: "",
     editorsEmail: "",
+    transactionId:"",
     domain: selectedDomain,
     reviewers: reviewersList
   });
@@ -96,6 +90,11 @@ const UserDashboard = () => {
     const { name, value } = e.target;
     setSubmission({ ...submission, [name]: value });
   };
+
+  const handleDomainChange = (value) => {
+    selectedDomain.id = value.id;
+    selectedDomain.domainName =value.domainName;
+  }
 
   const handleSubmit = (e) => {
     const form = new FormData();
@@ -170,6 +169,10 @@ const UserDashboard = () => {
     if (value.domainName === 'Other') {
       setIsDisabled(false)
     } else {
+      console.log(value)
+      selectedDomain.id = value.id;
+      selectedDomain.domainName =value.domainName;
+      console.log(selectedDomain)
       setIsDisabled(true)
     }
     setSelectedDomain(value);
@@ -183,6 +186,8 @@ const UserDashboard = () => {
       setSelectedFile(file)
     }
   }
+
+  const PDF_WARNING = 'Only doc file can be selected.'
 
 
   return (
@@ -286,7 +291,8 @@ const UserDashboard = () => {
                     style={{ fontWeight: "bold" }}
                     className="p-field"
                   >
-                    <label htmlFor="role">Attach Manuscript</label>
+                    <label htmlFor="role">Attach Manuscript</label><br/>
+                    <label style={{color:'red', fontSize:'12px'}}>({PDF_WARNING})</label>
                     <br />
                     <input
                       style={{ marginLeft: "90px", marginTop: "10px", display: 'flex', justifyContent: 'center' }}
@@ -303,23 +309,30 @@ const UserDashboard = () => {
                   <DataGrid onGridDataChange={(data) => handleGridData(data)} />
                 </div>
               </div>
+             
 
-              <div style={{ fontWeight: "bold", marginTop: "20px" }}>
-                <label>Payment Detail</label>
-
-                <div>
+              <div>
+              <h5 style={{textAlign:'center', marginTop:'20px'}} >Payment Details</h5>
+              <div style={{ fontWeight: "bold", marginTop: "20px", display:'flex', flexDirection:'row' }}>
+                
+                <div className="p-field">
                   <label>Transaction Number</label>
                   <InputText
                     style={{ marginTop: "10px", marginLeft: "10px" }}
                     className="p-inputtext-l"
                     id="transactionid"
+                    name="transactionId"
+                    value={submission.transactionId}
+                    onChange={handleChange}
                   />
                 </div>
-
+                <div className="p-field">
                 <label style={{ marginTop: "10px" }}>Upload Payment Receipt</label>
                 <input style={{ marginLeft: "10px", marginTop: "10px", marginBottom: "20px" }} type="file"></input>
+                </div>
+                
 
-
+              </div>
               </div>
 
 
