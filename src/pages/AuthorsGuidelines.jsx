@@ -9,34 +9,63 @@ const AuthorsGuidelines = () => {
             <div className='para'>
                 <h3>Author Guidelines</h3>
                 <p>
-                    The Journal of the Textile Association (JTA) is an Open Access, internationally indexed prestigious bi-monthly Peer Reviewed Textile Journal published by the Textile Association (India) since over 84 years, devoted for publication of communications embodying the results of original work of Research / Review which covers in only on different Textile branches of Textile Science, Technology, Engineering and Management that provides rapid publication.
+                    The Journal of the Textile Association (JTA) is an Open Access, internationally indexed prestigious Bi-
+                    Monthly Peer Reviewed Textile Journal published by the Textile Association (India) since over 84 years,
+                    devoted for publication of communications embodying the results of original work of Research / Review which
+                    covers in only on different Textile branches of Textile Science, Technology, Engineering and
+                    Management that provides rapid publication. Manuscripts, other than Journal Scope will not be accepted.
                 </p>
                 <p>
-                    JTA is indexed by Scopus (Elsevier), National Academy of Agriculture Science (NAAS), Indian Citation Index (ICI) and National Institute of Science Communication & Information Resources (NISCIAR) and by some others.
+                    JTA is indexed by Scopus (Elsevier), National Academy of Agriculture Science (NAAS), Indian Citation Index
+                    (ICI) and National Institute of Science Communication &amp; Information Resources (NISCIAR) and by some
+                    others.
                 </p>
                 <p>
                     JTA is Abstracted by Chemical Abstract (USA), Science Abstract (India) and World Textile Abstract (UK) etc.
                 </p>
 
                 <p>
-                    JTA is in the phase of transformation to a Peer Reviewed journal and hence it is requested to go through the JTA Guidelines and send us Manuscripts as per the requirements mentioned. Please follow the parameters for improving journal’s better Quality and Impact Factor. We follow Blind Peer Review Process. Received Manuscript Submissions, Hon. Editor decides for its acceptance or rejection. Accordingly, Author is intimated to make the changes considering the format and guidelines. If it is accepted, it goes for blind review process. Received comments from the reviewers will be sent to the author to send back edited revised manuscript after changes. Author will be informed for final rejection or the acceptance of the manuscript.
+                    JTA is in the phase of transformation to a Peer Reviewed journal and hence it is requested to go through the JTA
+                    Guidelines and send us Manuscripts as per the requirements mentioned. Please follow the parameters for
+                    improving journal’s better Quality and Impact Factor. We follow Blind Peer Review Process. Received
+                    Manuscript Submissions, Hon. Editor decides for its acceptance or rejection. Accordingly, Author is intimated to
+                    make the changes considering the format and guidelines. If it is accepted, it goes for blind review process.
+                    Received comments from the reviewers will be sent to the author to send back edited revised manuscript after
+                    changes. Author will be informed for final rejection or the acceptance of the manuscript.
                 </p>
 
                 <ul>
                     <li>Corresponding Author has to declare first that the article is original, not published (entirely or partly) in any other journal and not similar article is published by any other authors. (Article Submission Declaration Form to be sent).</li>
                     <li>Avoid publishing of Unethical Policies and practices. Such manuscripts will not be accepted.</li>
-                    <li>Plagiarism - Require 96 to 100% Unique Data for publication (Compulsory).</li>
+                    <li>Plagiarism - Require 95 to 100% Unique Data for publication (Compulsory).</li>
                     <li>Manuscripts should be spell checked and grammar checked. Also please check for free of plagiarism. </li>
                     <li>Author should submit Three Reviewers which are related to the field of the paper with their Full Contact Details (Name, Position, Organisation, Full Address, E-mail ID & Cell no.) and reasoning for suggesting these Reviewers. They should not be from the same institute of Authors.</li>
-                    <li>Use the guidelines to carry out a final check of your manuscript before you send it to the journal for publication.</li>
-                    <li>Page Layout: A4 Size paper, Margin Top 0.2”, Bottom 0.3”, Left 0.7”, Right 0.6” (No formatting in lines). Do not highlight with coloured.</li>
+                    <li>Use the Guidelines to carry out a final check of your manuscript before you send it to the journal for
+                        publication. Scholars should submit the manuscript only after varying by their HoD or seniors.</li>
+                    <li>Page Layout: A4 Size paper, Margin Top 0.2”, Bottom 0.3”, Left 0.7”, Right 0.6” (No formatting in lines).
+                        Do not highlight with coloured. Manuscript must be in WORD Ms format in single column. No PDF file.</li>
                     <li>Manuscripts should be mailed to Hon. Editor at jtaeditor@gmail.com / taicnt@gmail.com</li>
-                    <li>Authors are strictly warned for not to contact any Reviewer/s and request for the acceptance of their manuscripts. If it is noticed or get the information to us, such manuscript will be rejected without mentioning the reason.</li>
+                    <li>Authors are strictly warned for not to contact any Reviewer/s and request for the acceptance of their manuscripts.
+                        If it is noticed or get the information to us, such manuscript will be rejected without mentioning the reason.</li>
                     <li>Editorial Board has reserved the right to accept or reject any Manuscripts.</li>
-                    <li>JTA does not levy Article Processing Charges (APCs) or Article Submission Charges.</li>
+                    <li>Author should submit the Manuscript Submission Declaration Form duly signed.</li>
+                    <li>Manuscripts received from March 2024 &amp; onwards for publication in JTA will be charged Rs. 5000/- as
+                        Article Processing Charges (APCs). Payments needs to make along with the article online on TAI Bank
+                        account.</li>
+                    <li>
+                        Payment to be made on below Bank details (Attach the Screenshot of the Payment made)
+                        <ul>
+                            <li>Beneficiary Name: The Textile Association (India)</li>
+                            <li>Bank Name: Bank of Maharashtra</li>
+                            <li>Account Number: 60059709862</li>
+                            <li>Bank Code Number: 400014004</li>
+                            <li>IFSC Number: MAHB0000016</li>
+                        </ul>
+                    </li>
 
                 </ul>
 
+                <p>Journal of the Textile Association publishes the following types of Articles.</p>
                 <table>
                     <tr>
                         <th>Type Of Articles</th>
@@ -86,7 +115,15 @@ const AuthorsGuidelines = () => {
             <div className='para'>
                 <h3>Preparation and Format For Article</h3>
                 <p>
-                    It should be written in English only on MS Word 2007 or above in Single Column. No Header & Footer to be inserted. Illustrations (Figures & Tables) to be clear readable images in (JPEG) format and must be inserted in the article at the appropriated position to appear. Articles should be concisely in 1.15 spaces in A4 paper size with required margins. Article shall be prepared in Times New Roman using font size 11 normal and for Article Title (14 bold faces, each of first word in Capital and others in Lower case). Author/s Name using font size 12 bold faces, Institute, Department with location using font size 11 Italic faces are to be used. For citation/references follow the journal style. It should be numbered in the text consecutively, like [1] [2] or [1, 2] etc. formatted as superscript. It should be arranged in the following order:
+                    It should be written in English only on MS Word 2007 or above in Single Column. No Header, Footer &amp; Page no.
+                    to be inserted. Illustrations (Figures &amp; Tables) to be clear readable images in (JPEG) format and must be inserted
+                    in the article at the appropriated position to appear. Articles should be concisely in 1.15 spaces in A4 paper size
+                    with required margins. Article shall be prepared in Times New Roman using font size 11 normal and for Article
+                    Title (14 bold faces, each of first word in Capital and others in Lower case). Author/s Name using font size 12
+
+                    bold faces, Department, Institute with location using font size 11 Italic faces are to be used. For
+                    citation/references follow the journal style. It should be numbered in the text consecutively, like [1, 2] or [1-5]
+                    etc. formatted as superscript.
                 </p>
 
                 <ol>
@@ -109,13 +146,20 @@ const AuthorsGuidelines = () => {
                     Title Page
                 </h4>
                 <p>
-                    The Title should be on the first page with Times New Roman (14 font Bold), not more than 10-12 words, Name/s of the Author/s (11 font Bold), Department, Name of Institute with Address (11 font Italic). Total Authors should not be more than 4.
+                    The Title should be on the first page with Times New Roman (14 font Bold), not more than 10-12 words,
+                    Name/s of the Author/s (11 font Bold), Department, Name of Institute with Address (11 font Italic). Total
+                    Authors should not be more than 4.
                 </p>
-                <p>Please mention Full Address of *Corresponding Author including E-mail ID at bottom left corner of the title page. If any of the co-authors are from different organizations, their addresses too should be mentioned and indicated using numbers after their names. The Corresponding Author of the article must be marked with an asterisk*. More than 4 Authors names will be deleted.</p>
+                <p>Please mention Full Address of *Corresponding Author including E-mail ID at bottom left corner of the title
+                    page. If any of the co-authors are from different organizations, their addresses too should be mentioned and
+                    indicated using numbers after their names. The Corresponding Author of the article must be marked with an
+                    asterisk*. More than 4 Authors names will be deleted.</p>
 
                 <h4>Abstract</h4>
                 <p>
-                    Abstract should be typed briefly reflect all aspects of the study, as most databases list mainly abstracts and references should be avoided. The abstract section should not exceed more than 250 words and divided must be into Background, Methods, Results and Conclusion sub-heading.
+                    Abstract should be typed briefly reflect all aspects of the study, as most databases list mainly abstracts and
+                    references should be avoided. The abstract section should not exceed more than 250 words and divided must be
+                    into Background, Methods, Results and Conclusion sub-heading.
                 </p>
 
                 <h4>Keywords</h4>
@@ -126,7 +170,9 @@ const AuthorsGuidelines = () => {
 
                 <h4>Materials And Method</h4>
                 <p>
-                    Describe the materials used in the experiment, department, place, month, year of experimentation etc. in the separate first paragraph. Followed by describe the methodology (with references) implied for collection of data in short on next paragraph.
+                    Describe the materials used in the experiment, department, place, month, year of experimentation etc. in the
+                    separate first paragraph. Followed by describe the methodology (with references) implied for collection of data in
+                    short on next paragraph.
                 </p>
 
                 <h4>Tables</h4>
@@ -135,7 +181,8 @@ const AuthorsGuidelines = () => {
                 </p>
 
                 <h4>Illustrations and Figures</h4>
-                <p>Figures must be (Preferable in JPEG) cleared readable, visible, numbered and cited at the relevant position in the below of the article text, e.g. Figure 1:, Figure 2 :, etc. in Bold letters. No full stop at the end of each caption’</p>
+                <p>Figures must be (Preferable in JPEG) cleared readable, visible, numbered and cited at the relevant position in the
+                    below of the article text, e.g. Figure 1-, Figure 2 - etc. in Bold letters. No full stop at the end of each caption</p>
 
                 <h4>Results And Discussion</h4>
                 <p>Results should be clear and concise. Discussion should explore the significance of the results of the work, not repeat them. A combined Results and Discussion section is desirable. Avoid extensive citations and discussion of published literature.</p>
