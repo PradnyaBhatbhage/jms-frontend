@@ -63,6 +63,16 @@ const DataGrid = (props) => {
             count++;
         }
 
+        const newReviewer = {
+            reviewersName: "",
+            reviewersContact: "",
+            reviewersEmail: "",
+            reviewersDesignation: "",
+            reviewersOrganisation: ""
+        }
+
+        setReviewer(newReviewer);
+
     }
 
     const editIcon = () => {

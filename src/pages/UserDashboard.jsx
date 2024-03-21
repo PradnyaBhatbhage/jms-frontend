@@ -8,6 +8,7 @@ import "/src/css/userdashboard.css";
 import axios from "axios";
 import { Dropdown } from 'primereact/dropdown';
 import DataGrid from "../components/DataGrid";
+import ProfileContainer from "../components/ProfileContainer";
 
 function Reviewer(name, contact, email) {
   this.name = name;
@@ -200,15 +201,7 @@ const UserDashboard = () => {
       </h2>
       <TabView style={{ marginTop: "60px", paddingTop: "0px" }}>
         <TabPanel header="Profile">
-          <p className="m-0">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
+          <ProfileContainer/>
         </TabPanel>
         <TabPanel header="Upload Manuscript">
           <div className="upload-div">
