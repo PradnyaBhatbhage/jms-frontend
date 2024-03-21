@@ -65,15 +65,33 @@ const DataGrid = (props) => {
 
     }
 
+
+
+    const handleDelete = (index) => {
+        const newReviewers = [...reviewers];
+        newReviewers.splice(index, 1);
+        setReviewers(newReviewers);
+    };
+
+    /* const deleteIcon = (rowData, column) => {
+        return (
+            <Button icon="pi pi-trash" className="p-button-rounded p-button-danger"
+                onClick={() => handleDelete(column.rowIndex)} />
+        )
+    } */
+
+
+
     const editIcon = () => {
         return (
             <FontAwesomeIcon color='blue' icon={faPenToSquare} />
         )
     }
 
-    const deleteIcon = () => {
+    const deleteIcon = (rowData, column) => {
         return (
-            <FontAwesomeIcon color='red' icon={faTrashCan} />
+            <FontAwesomeIcon color='red' icon={faTrashCan} onClick={() => handleDelete(column.rowIndex)} />
+            //<Button icon={faTrashCan} onClick={() => handleDelete(column.rowIndex)}></Button>
         )
     }
 
@@ -103,6 +121,9 @@ const DataGrid = (props) => {
 
                 <Column field="delete" header="Delete" body={deleteIcon}></Column>
                 <Column field="edit" header="Edit" body={editIcon}></Column>
+
+
+                {/* <Column body={deleteIcon}></Column> */}
 
             </DataTable>
 
