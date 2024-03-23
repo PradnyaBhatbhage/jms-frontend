@@ -76,12 +76,20 @@ const DataGrid = (props) => {
     }
 
 
-
+    const [editedIndex, setEditedIndex] = useState(null);
     const handleDelete = (index) => {
         const newReviewers = [...reviewers];
         newReviewers.splice(index, 1);
         setReviewers(newReviewers);
     };
+
+    const handleEdit = (index) => {
+        const editedReviewer = reviewers[index];
+        setReviewer(editedReviewer);
+        setVisible(true);
+        setEditedIndex(index);
+    };
+
 
     /* const deleteIcon = (rowData, column) => {
         return (
@@ -92,9 +100,9 @@ const DataGrid = (props) => {
 
 
 
-    const editIcon = () => {
+    const editIcon = (rowData, column) => {
         return (
-            <FontAwesomeIcon color='blue' icon={faPenToSquare} />
+            <FontAwesomeIcon color='blue' icon={faPenToSquare} onClick={() => handleEdit(column.rowIndex)} />
         )
     }
 
@@ -132,8 +140,6 @@ const DataGrid = (props) => {
                 <Column field="delete" header="Delete" body={deleteIcon}></Column>
                 <Column field="edit" header="Edit" body={editIcon}></Column>
 
-
-                {/* <Column body={deleteIcon}></Column> */}
 
             </DataTable>
 
