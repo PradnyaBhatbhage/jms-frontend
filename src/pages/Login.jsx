@@ -44,6 +44,7 @@ const Login = () => {
           sessionStorage.setItem("firstName", userData.firstName);
           sessionStorage.setItem("lastName", userData.lastName);
           sessionStorage.setItem("accountNo", userData.accountNo)
+          console.log(sessionStorage.getItem('accountNo'));
           sessionStorage.setItem("email", userData.email);
           sessionStorage.setItem("role", userData.role);
           console.log(sessionStorage.getItem("email"))

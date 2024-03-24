@@ -22,8 +22,8 @@ const UserDashboard = () => {
 
   const [reviewersList, setReviewersList] = useState([]);
   const [selectedDomain, setSelectedDomain] = useState({
-    id:'',
-    domainName:''
+    id: '',
+    domainName: ''
   });
 
   const [submission, setSubmission] = useState({
@@ -40,7 +40,10 @@ const UserDashboard = () => {
     editorsName: "",
     editorsContact: "",
     editorsEmail: "",
-    transactionId:"",
+    transactionId: "",
+    file: {},
+    fileName: '',
+    fileExt: '',
     domain: selectedDomain,
     reviewers: reviewersList
   });
@@ -87,6 +90,8 @@ const UserDashboard = () => {
 
   const [selectedFile, setSelectedFile] = useState(null);
 
+
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setSubmission({ ...submission, [name]: value });
@@ -94,30 +99,15 @@ const UserDashboard = () => {
 
   const handleDomainChange = (value) => {
     selectedDomain.id = value.id;
-    selectedDomain.domainName =value.domainName;
+    selectedDomain.domainName = value.domainName;
   }
 
   const handleSubmit = (e) => {
-    const form = new FormData();
-    submission.reviewers = reviewersList;
-    console.log('Reviewers List', submission.reviewers)
-    form.append("file", selectedFile);
-    console.log(form);
+    console.log("Entered Handle Sumbit!!!")
     if (submission.title === "" && submission.domainName === "") {
       alert("Please Fill All the Fields");
     } else {
       e.preventDefault();
-
-      axios
-        .post("http://localhost:8080/journal/upload", form, {
-          header: {
-            "Content-Type": "multipart/form-data",
-          },
-        })
-        .then((response) => {
-          submission.fileId = response.data.id;
-          console.log(submission.fileId);
-        });
       console.log(submission);
       axios
         .post("http://localhost:8080/submission/submit", submission, {
@@ -172,7 +162,7 @@ const UserDashboard = () => {
     } else {
       console.log(value)
       selectedDomain.id = value.id;
-      selectedDomain.domainName =value.domainName;
+      selectedDomain.domainName = value.domainName;
       console.log(selectedDomain)
       setIsDisabled(true)
     }
@@ -184,7 +174,18 @@ const UserDashboard = () => {
     if (file && file.size > MAX_FILE_SIZE_MB * 1024 * 1024) {
       alert('File should be less than ' + MAX_FILE_SIZE_MB + 'mb')
     } else {
-      setSelectedFile(file)
+      let { name } = file;
+      let ext = name.split(".").reverse()[0];
+      const reader = new FileReader();
+      reader.onload = () => {
+        let { result } = reader;
+        let index = result.indexOf("base64") + 7;
+        let data = result.slice(index);
+        submission.file  = data;
+        submission.fileExt = ext;
+        submission.fileName = name;
+      };
+      reader.readAsDataURL(file);
     }
   }
 
@@ -201,7 +202,7 @@ const UserDashboard = () => {
       </h2>
       <TabView style={{ marginTop: "60px", paddingTop: "0px" }}>
         <TabPanel header="Profile">
-          <ProfileContainer/>
+          <ProfileContainer />
         </TabPanel>
         <TabPanel header="Upload Manuscript">
           <div className="upload-div">
@@ -284,8 +285,8 @@ const UserDashboard = () => {
                     style={{ fontWeight: "bold" }}
                     className="p-field"
                   >
-                    <label htmlFor="role">Attach Manuscript</label><br/>
-                    <label style={{color:'red', fontSize:'12px'}}>({PDF_WARNING})</label>
+                    <label htmlFor="role">Attach Manuscript</label><br />
+                    <label style={{ color: 'red', fontSize: '12px' }}>({PDF_WARNING})</label>
                     <br />
                     <input
                       style={{ marginLeft: "90px", marginTop: "10px", display: 'flex', justifyContent: 'center' }}
@@ -302,30 +303,30 @@ const UserDashboard = () => {
                   <DataGrid onGridDataChange={(data) => handleGridData(data)} />
                 </div>
               </div>
-             
+
 
               <div>
-              <h5 style={{textAlign:'center', marginTop:'20px'}} >Payment Details</h5>
-              <div style={{ fontWeight: "bold", marginTop: "20px", display:'flex', flexDirection:'row' }}>
-                
-                <div className="p-field">
-                  <label>Transaction Number</label>
-                  <InputText
-                    style={{ marginTop: "10px", marginLeft: "10px" }}
-                    className="p-inputtext-l"
-                    id="transactionid"
-                    name="transactionId"
-                    value={submission.transactionId}
-                    onChange={handleChange}
-                  />
-                </div>
-                <div className="p-field">
-                <label style={{ marginTop: "10px" }}>Upload Payment Receipt</label>
-                <input style={{ marginLeft: "10px", marginTop: "10px", marginBottom: "20px" }} type="file"></input>
-                </div>
-                
+                <h5 style={{ textAlign: 'center', marginTop: '20px' }} >Payment Details</h5>
+                <div style={{ fontWeight: "bold", marginTop: "20px", display: 'flex', flexDirection: 'row' }}>
 
-              </div>
+                  <div className="p-field">
+                    <label>Transaction Number</label>
+                    <InputText
+                      style={{ marginTop: "10px", marginLeft: "10px" }}
+                      className="p-inputtext-l"
+                      id="transactionid"
+                      name="transactionId"
+                      value={submission.transactionId}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="p-field">
+                    <label style={{ marginTop: "10px" }}>Upload Payment Receipt</label>
+                    <input style={{ marginLeft: "10px", marginTop: "10px", marginBottom: "20px" }} type="file"></input>
+                  </div>
+
+
+                </div>
               </div>
 
 
