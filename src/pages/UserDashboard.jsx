@@ -9,6 +9,7 @@ import axios from "axios";
 import { Dropdown } from 'primereact/dropdown';
 import DataGrid from "../components/DataGrid";
 import ProfileContainer from "../components/ProfileContainer";
+import StatusOfManusscript from "../components/StatusOfManusscript";
 
 function Reviewer(name, contact, email) {
   this.name = name;
@@ -67,27 +68,6 @@ const UserDashboard = () => {
 
   const MAX_FILE_SIZE_MB = 20;
 
-  const fetchData = () => {
-    axios.get("http://localhost:8080/submission/fetchByEmail", {
-      params: {
-        email: sessionStorage.getItem("email"),
-      }
-
-    }).then((data) => {
-      console.log(data)
-      setSubmissionData(data.data);
-      console.log(submissionData)
-    })
-  }
-
-  useEffect(() => {
-    // Call fetchData when the component mounts
-    fetchData();
-    console.log(submissionData)
-  }, []);
-
-
-
   const [selectedFile, setSelectedFile] = useState(null);
 
 
@@ -120,14 +100,6 @@ const UserDashboard = () => {
     }
   };
 
-
-
-  const columns = [
-    { field: 'title', header: 'Title' },
-    { field: 'organization', header: 'Organization' },
-    { field: 'reviewersName', header: 'Reviewers Name' },
-    { field: 'description', header: 'Description' }
-  ];
 
   const [domainNames, setDomainNames] = useState([]);
   const [count, setCount] = useState(0);
@@ -337,14 +309,7 @@ const UserDashboard = () => {
           </div>
         </TabPanel>
         <TabPanel header="Status Of Manuscript">
-          <div className="card">
-            <DataTable value={submissionData} tableStyle={{ minWidth: '50rem' }}>
-
-              {columns.map((col, i) => (
-                <Column key={col.field} field={col.field} header={col.header} />
-              ))}
-            </DataTable>
-          </div>
+          <StatusOfManusscript/>
         </TabPanel>
       </TabView>
     </div>
