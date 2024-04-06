@@ -6,7 +6,24 @@ import { InputText } from 'primereact/inputtext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFileArrowDown, faThumbsDown, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
-const ReviewerDashBoard = () => {
+  const ReviewerDashBoard = () => {
+    // const [submission, setSubmission] = useState({
+    //   title: "",
+    //   email: sessionStorage.getItem("email"),
+    //   domainName: "",
+    //   created: new Date().toLocaleDateString(),
+    //   organization: "",
+    //   status: "Pending",
+    //   reviewer: "",
+    //   description: "",
+    //   fileId: "",
+    //   transactionId: "",
+    //   file: {},
+    //   fileName: '',
+    //   fileExt: '',
+    //   domain: '',
+    //   reviewers: []
+    // });
   const [submissions, setSubmissions] = useState([]);
 
   const approve = () => {
@@ -36,7 +53,7 @@ const ReviewerDashBoard = () => {
 
 
   useEffect(() => {
-    axios.get("http://localhost:8080/submission/fetchBySubmissionsByEmail", {
+    axios.get("http://localhost:8080/submission/fetchByReviewerEmail", {
       params: {
         email: sessionStorage.getItem("email"),
       }
@@ -44,7 +61,7 @@ const ReviewerDashBoard = () => {
       .then((response) => {
         console.log('email:', sessionStorage.getItem("email"))
         setSubmissions(response.data);
-        console.log(submissions)
+        console.log('Submission Data :',submissions)
       });
   }, [])
 
@@ -89,13 +106,13 @@ const ReviewerDashBoard = () => {
         <div className="p-col-8">
 
           <DataTable value={submissions}>
-            <Column field="title" header="Title" />
-            <Column field="domain" header="Domain" />
+            <Column field="applicationNo" header="Title" />
+            <Column field="domain.domainName" header="Domain" />
             <Column field="description" header="Description" />
             <Column body={approve} header="Approve" />
             <Column body={reject} header="Reject" />
             <Column body={downloadIcon} header='Download' />
-            <Column field="comment" header="Comment" editor={commentEditor} />
+            {/* <Column field="comment" header="Comment" editor={commentEditor} /> */}
 
             <Column header="Date of Acceptance"></Column>
             <Column header="Date of Submission"></Column>

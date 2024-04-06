@@ -84,6 +84,8 @@ const UserDashboard = () => {
 
   const handleSubmit = (e) => {
     console.log("Entered Handle Sumbit!!!")
+    submission.reviewers = reviewersList;
+    console.log('Data:', submission)
     if (submission.title === "" && submission.domainName === "") {
       alert("Please Fill All the Fields");
     } else {
