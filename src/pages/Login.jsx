@@ -3,6 +3,12 @@ import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import ReCAPTCHA from 'react-google-recaptcha';
+
+const REACT_APP_SITE_KEY = "6LdFSbMpAAAAAGUspeoWgXNr4d7EwUG-giArjuaT";
+const SITE_SECRET = "6LdFSbMpAAAAAIpMDz3ilOpAngnonNMXhjiWhfqC";
+
+
 const Login = () => {
   const [loginData, setLoginData] = useState({
     email: "",
@@ -22,6 +28,9 @@ const Login = () => {
   };
 
   const navigate = useNavigate();
+
+
+
   const handleSubmit = (e) => {
     if (!validateEmail(loginData.email)) {
       alert("Invalid Email");
@@ -30,11 +39,14 @@ const Login = () => {
     } else {
       e.preventDefault();
       console.log(loginData);
+
+
       axios
         .get("http://localhost:8080/users/getUser", {
           params: {
             email: loginData.email,
-            password: loginData.password
+            password: loginData.password,
+
           },
         })
         .then((response) => {
@@ -67,9 +79,13 @@ const Login = () => {
   };
 
   return (
+
     <div className="user-form" >
+
       <form onSubmit={handleSubmit} style={{ marginTop: "150px" }}>
         <h2>Login</h2>
+
+
         <div className="p-field">
           <label htmlFor="email">Email Id</label>
           <br />
@@ -94,17 +110,29 @@ const Login = () => {
 
 
 
-        <div className="p-field">
+        {/* <div className="p-field">
           <label htmlFor="password">Enter Captcha</label>
           <br />
           <InputText
             type="text"
             id="captcha"
           />
+        </div> */}
+
+        <div className="p-field">
+          {/* <label htmlFor="password">Enter Captcha</label> */}
+          <br />
+
+          <ReCAPTCHA sitekey={REACT_APP_SITE_KEY} />
+
+          {/* <button class="g-recaptcha"
+            data-sitekey="6LdB8rIpAAAAABGxsp_mrn4JdAA0CxoVh7SNrhOU"
+            data-callback='onSubmit'
+            data-action='submit'>
+            Submit
+          </button> */}
+          {/* <div className="g-recaptcha" data-sitekey="6LdB8rIpAAAAABGxsp_mrn4JdAA0CxoVh7SNrhOU"></div> */}
         </div>
-
-
-
 
 
         <div className="p-field">
