@@ -42,7 +42,7 @@ const UserDashboard = () => {
     editorsContact: "",
     editorsEmail: "",
     transactionId: "",
-    file: {},
+    file: [],
     fileName: '',
     fileExt: '',
     domain: selectedDomain,
@@ -84,7 +84,7 @@ const UserDashboard = () => {
 
   const handleSubmit = (e) => {
     console.log("Entered Handle Sumbit!!!")
-    submission.reviewers = reviewersList;
+    submission.reviewers = reviewersList
     console.log('Data:', submission)
     if (submission.title === "" && submission.domainName === "") {
       alert("Please Fill All the Fields");
