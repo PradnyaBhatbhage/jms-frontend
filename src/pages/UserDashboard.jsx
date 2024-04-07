@@ -145,6 +145,14 @@ const UserDashboard = () => {
 
   const onFileUpload = (event) => {
     const file = event.target.files[0];
+    const allowedExtensions = /\.doc$/i; // Specify your allowed extensions here
+
+    if (!allowedExtensions.test(file.name)) {
+      alert('Invalid file type! Please upload only JPG/JPEG files.');
+      document.getElementById("fileUpload").value = "";
+      return;
+    }
+
     if (file && file.size > MAX_FILE_SIZE_MB * 1024 * 1024) {
       alert('File should be less than ' + MAX_FILE_SIZE_MB + 'mb')
     } else {
@@ -164,6 +172,7 @@ const UserDashboard = () => {
   }
 
   const PDF_WARNING = 'Only doc file can be selected.'
+
 
 
   return (
@@ -262,12 +271,13 @@ const UserDashboard = () => {
                     <label htmlFor="role">Attach Manuscript</label><br />
                     <label style={{ color: 'red', fontSize: '12px' }}>({PDF_WARNING})</label>
                     <br />
-                    <input
+                    <input id="fileUpload"
                       style={{ marginLeft: "90px", marginTop: "10px", display: 'flex', justifyContent: 'center' }}
                       type="file"
 
                       // accept=".pdf, .doc"
                       accept=".doc"
+
                       onChange={onFileUpload}
                     />
                   </div>
