@@ -6,24 +6,24 @@ import { InputText } from 'primereact/inputtext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFileArrowDown, faThumbsDown, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
-  const ReviewerDashBoard = () => {
-    // const [submission, setSubmission] = useState({
-    //   title: "",
-    //   email: sessionStorage.getItem("email"),
-    //   domainName: "",
-    //   created: new Date().toLocaleDateString(),
-    //   organization: "",
-    //   status: "Pending",
-    //   reviewer: "",
-    //   description: "",
-    //   fileId: "",
-    //   transactionId: "",
-    //   file: {},
-    //   fileName: '',
-    //   fileExt: '',
-    //   domain: '',
-    //   reviewers: []
-    // });
+const ReviewerDashBoard = () => {
+  // const [submission, setSubmission] = useState({
+  //   title: "",
+  //   email: sessionStorage.getItem("email"),
+  //   domainName: "",
+  //   created: new Date().toLocaleDateString(),
+  //   organization: "",
+  //   status: "Pending",
+  //   reviewer: "",
+  //   description: "",
+  //   fileId: "",
+  //   transactionId: "",
+  //   file: {},
+  //   fileName: '',
+  //   fileExt: '',
+  //   domain: '',
+  //   reviewers: []
+  // });
   const [submissions, setSubmissions] = useState([]);
 
   const approve = () => {
@@ -42,10 +42,34 @@ import axios from 'axios';
     )
   }
 
-  const downloadIcon = () => {
+  const onDownload = (data) => {
+    console.log(data)
+    var arrayBuffer = data.file;
+    console.log('Inside onload')
+    var blob = new Blob([arrayBuffer], { type: data.fileExt });
+    var url = URL.createObjectURL(blob);
+    // Create a temporary <a> element
+    const tempLink = document.createElement('a');
+    tempLink.href = url;
+    tempLink.setAttribute('download', data.fileName);
+    tempLink.setAttribute('target', '_blank');
+
+    // Append the <a> element to the body
+    document.body.appendChild(tempLink);
+
+    // Simulate a click event to download the file
+    tempLink.click();
+
+    // Remove the temporary <a> element
+    document.body.removeChild(tempLink);
+  }
+
+
+  const downloadIcon = (data) => {
+
     return (
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '80px' }}>
-        <FontAwesomeIcon color='blue' icon={faFileArrowDown} />
+        <FontAwesomeIcon color='blue' icon={faFileArrowDown} onClick={() => onDownload(data)} />
       </div>
     )
   }
@@ -61,40 +85,11 @@ import axios from 'axios';
       .then((response) => {
         console.log('email:', sessionStorage.getItem("email"))
         setSubmissions(response.data);
-        console.log('Submission Data :',submissions)
+        console.log('Submission Data :', response)
       });
   }, [])
 
 
-
-  const approveSubmission = (submissionId) => {
-    // Add your approval logic here
-    alert(`Submission ${submissionId} has been approved.`);
-  };
-
-  const rejectSubmission = (submissionId) => {
-    // Add your rejection logic here
-    alert(`Submission ${submissionId} has been rejected.`);
-  };
-
-  const onCommentChange = (event, rowData) => {
-    const updatedSubmissions = [...submissions];
-    const index = updatedSubmissions.findIndex((s) => s.id === rowData.id);
-    if (index !== -1) {
-      updatedSubmissions[index].comment = event.target.value;
-      setSubmissions(updatedSubmissions);
-    }
-  };
-
-  const commentEditor = (rowData) => {
-    return (
-      <InputText
-        value={rowData.comment}
-        onChange={(e) => onCommentChange(e, rowData)}
-        style={{ width: '100%' }}
-      />
-    );
-  };
 
   return (
     <div style={{ marginTop: "20px" }}>
@@ -111,7 +106,7 @@ import axios from 'axios';
             <Column field="description" header="Description" />
             <Column body={approve} header="Approve" />
             <Column body={reject} header="Reject" />
-            <Column body={downloadIcon} header='Download' />
+            <Column body={(data) => downloadIcon(data)} header='Download' />
             {/* <Column field="comment" header="Comment" editor={commentEditor} /> */}
 
             <Column header="Date of Acceptance"></Column>
